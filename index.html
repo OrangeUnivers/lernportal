@@ -29,7 +29,6 @@
             top: 0;
             width: 100%;
             height: 100%;
-            visibility: visible;
         }
         .subjectGrid {
             display: grid;
@@ -37,54 +36,61 @@
             width: 100%; 
             padding: 12px;
         }
-        .subjectGrid div {
+        .subjectGrid a {
             background-color: rgb(232, 232, 232);
-            height: 500px;
+            height: calc(((100vw - 25px)/5)*1.25);
             margin: 10px;
             padding-left: 10px;
             padding-right: 10px;
             padding-top: 2px;
             padding-bottom: 2px;
-            border-radius: 15px;
+            border-radius: 35px;
             display: flex;
             justify-content: center;
             align-items: center;
+            text-decoration: none;
+            transition: all 0.5s;
+        }
+        .subjectGrid a:hover {
+            background-color: rgb(209, 209, 209);
+            margin: 0px;
         }
         .subjectGrid p {
             font-family: Nunito;
             font-weight: 700;
-            font-size: 48px;
+            font-size: 56px;
             color: rgb(64, 64, 64);
+            transition: all 0.5s;
+        }
+        .subjectGrid a:hover p {
+            color: rgb(82, 82, 82);
         }
     </style>
 </head>
 <body>
     <div id="subjects" class="subejectView">
         <div style="position: relative; display: flex; justify-content: center; align-items: center; width: 100%; top: 0; padding-bottom: 10px; padding-top: 10px;">
-            <h1>Fächer</h1>
+            <h1>LernPortal</h1>
         </div>
-        <div id="subject-grid" class="subjectGrid">
-            <div>
-                <p>Deutsch</p>
-            </div>
-            <div>
-                <p>kajkjlsad</p>
-            </div>
-            <div>
-                <p>kajkjlsad</p>
-            </div>
-            <div>
-                <p>kajkjlsad</p>
-            </div>
-            <div>
-                <p>kajkjlsad</p>
-            </div>
-        </div>
+        <div id="subject-grid" class="subjectGrid"></div>
     </div>
     <script>
-        function removeSupjects() {
-            document.getElementById("subjects").style.visibility = "hidden";
+        var activeClasses = ["german", "latin", "math", "geographics"]
+        var classes = {
+            "german": {name: "Deutsch"},
+            "latin": {name: "Latein"},
+            "math": {name: "Mathe"},
+            "geographics": {name: "Geographie"}
         }
+        activeClasses.forEach((element, index) => {
+            var grid = document.getElementById("subject-grid");
+
+            var currentClass = document.createElement('a');
+
+            currentClass.innerHTML = `<p>${classes[element].name}</p>`;
+            currentClass.href = element;
+            grid.appendChild(currentClass);
+        })
     </script>
 </body>
 </html>
