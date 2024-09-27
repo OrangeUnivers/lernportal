@@ -15,7 +15,7 @@
             background-color: white;
             height: 100%;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         h1 {
             line-height: 0px;
@@ -39,6 +39,7 @@
         .categoryGrid a {
             background-color: rgb(232, 232, 232);
             height: calc(((100vw - 25px)/5)*1.25);
+            min-height: 300px;
             margin: 10px;
             padding-left: 10px;
             padding-right: 10px;
@@ -92,7 +93,7 @@
             <h1>Deutsch</h1>
         </div>
         <div id="subject-grid" class="categoryGrid"></div>
-        <a class="back" href="..">
+        <a id="back-button" class="back" href="..">
             <i class="fa-solid fa-arrow-left"></i> Fächer
         </a>
     </div>
@@ -114,6 +115,32 @@
             currentCategory.href = element;
             grid.appendChild(currentCategory);
         })
+        function updateWidthGrid() {
+            var grid = document.getElementById("subject-grid");
+            var back = document.getElementById("back-button");
+            if (window.innerWidth >= 1830) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/5) calc((100vw - 25px)/5) calc((100vw - 25px)/5) calc((100vw - 25px)/5) calc((100vw - 25px)/5)";
+                back.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Fächer`;
+            }
+            if (window.innerWidth < 1830) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/4) calc((100vw - 25px)/4) calc((100vw - 25px)/4) calc((100vw - 25px)/4)";
+                back.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Fächer`;
+            }
+            if (window.innerWidth < 1382) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/3) calc((100vw - 25px)/3) calc((100vw - 25px)/3)";
+                back.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Fächer`;
+            }
+            if (window.innerWidth < 1080) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/2) calc((100vw - 25px)/2)";
+                back.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Fächer`;
+            }
+            if (window.innerWidth < 710) {
+                grid.style.gridTemplateColumns = "calc(100vw - 25px)";
+                back.innerHTML = `<i class="fa-solid fa-arrow-left"></i>`;
+            }
+        }
+        updateWidthGrid();
+        window.addEventListener('resize', updateWidthGrid);
     </script>
 </body>
 </html>
