@@ -15,7 +15,7 @@
             background-color: white;
             height: 100%;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         h1 {
             line-height: 0px;
@@ -39,6 +39,7 @@
         .subjectGrid a {
             background-color: rgb(232, 232, 232);
             height: calc(((100vw - 25px)/5)*1.25);
+            min-height: 300px;
             margin: 10px;
             padding-left: 10px;
             padding-right: 10px;
@@ -90,7 +91,27 @@
             currentClass.innerHTML = `<p>${classes[element].name}</p>`;
             currentClass.href = element;
             grid.appendChild(currentClass);
-        })
+        });
+        function updateWidthGrid() {
+            var grid = document.getElementById("subject-grid");
+            if (window.innerWidth >= 1830) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/5) calc((100vw - 25px)/5) calc((100vw - 25px)/5) calc((100vw - 25px)/5) calc((100vw - 25px)/5)";
+            }
+            if (window.innerWidth < 1830) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/4) calc((100vw - 25px)/4) calc((100vw - 25px)/4) calc((100vw - 25px)/4)";
+            }
+            if (window.innerWidth < 1382) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/3) calc((100vw - 25px)/3) calc((100vw - 25px)/3)";
+            }
+            if (window.innerWidth < 1080) {
+                grid.style.gridTemplateColumns = "calc((100vw - 25px)/2) calc((100vw - 25px)/2)";
+            }
+            if (window.innerWidth < 710) {
+                grid.style.gridTemplateColumns = "calc(100vw - 25px)";
+            }
+        }
+        updateWidthGrid();
+        window.addEventListener('resize', updateWidthGrid);
     </script>
 </body>
 </html>
