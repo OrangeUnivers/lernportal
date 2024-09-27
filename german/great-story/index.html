@@ -88,466 +88,669 @@
         .page-control:hover {
             background-color: rgb(60, 102, 182);
         }
+        .printer {
+            position: fixed;
+        }
+        .printer * {
+            visibility: hidden;
+        }
+        .paragraph {
+            background-color: white !important;
+            border-radius: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .print span {
+            color: black;
+            border: 2.5px solid black;
+            transition: all 0.3s;
+        }
+        .print span:hover {
+            color: rgb(82, 82, 82);
+            border: 2.5px solid rgb(46, 46, 46);
+        }
     </style>
     <style>
         @media print {
             body * {
                 visibility: hidden;
             }
+            .printer {
+                position: relative;
+            }
             .printer * {
                 visibility: visible;
             }
-            .printer * {
-                position: absolute;
-                top: 0;
-                left: 0;
+            .printer > div {
+                position: relative;
+                page-break-after: always;
+                margin-bottom: 20px;
+            }
+            .paragraph {
+                background-color: whitesmoke !important; /* Ensure this matches */
+                border: 5px solid whitesmoke;
+            }
+            h3 {
+                margin-top: 20px;
+                margin-bottom: 10px;
+                font-size: 36px;
+                font-family: Nunito;
+                text-decoration: underline;
+            }
+            h4 {
+                font-weight: 600;
+                margin-top: 25px;
+                margin-bottom: 0px;
+                line-height: 0;
+                font-size: 26px;
+                font-family: Nunito;
             }
         }
     </style>
 </head>
-<body>
-    <div style="display: flex; justify-content: center;">
-        <h2 style="top: 0; position: fixed; text-align: center; line-height: 2px; font-family: Nunito;">Schöne Geschichte!</h1>
-    </div>
+<body></body>
+    <div class="printer" id="printer"></div>
     <div class="main">
-        <div class="page">
-            <div id="page-1" style="visibility: hidden; position: fixed;">
-                <p style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">22.8.2024</p>
-                <h3>Schöne Geschichten</h3>
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px;">
-                    <h4 style="padding-top: 22px;">Was du in dein Heft notierst/Ablauf:</h4>
-                    <p style="padding-bottom: 8px;">
-                        <span style="font-family: Fira Code;">1. </span>Titel, Autor, Datum <i>eintragen</i>.<br>
-                        <span style="font-family: Fira Code;">2. </span>Geschichte <i>einkleben</i>.<br>
-                        <span style="font-family: Fira Code;">3. </span>Geschichte gemeinsam lesen.<br>
-                        <span style="font-family: Fira Code;">4. </span>Erste <i>Gedanken</i> notieren: Welche <i>Meinung</i> hast du zur Geschichte, welche <i>Fragen</i> kommen dir in den Sinn? <i>Mit</i> <i style="color: green;">1. Farbe</i> <i>(5-10 Minuten)</i><br>
-                        <span style="font-family: Fira Code;">5. </span><i>Austausch mit Nachbar-/in</i> (5' + schriftliche Ergänzungen) <i>mit</i> <i style="color: dodgerblue;">2. Farbe</i>.<br>
-                        <span style="font-family: Fira Code;">6. </span><i>Diskussion in der Klasse;</i> letzte 5': stilles Notieren, was hast du aus der Besprechung mitgenommen? (Was weiss ich mehr?) <i>mit</i> <i style="color: red;">3. Farbe</i>.<br>
-                        <span style="font-family: Fira Code;">7. </span>Das Ganze in möglichst <i>übersichtlicher Darstellung</i>.<br>
+        <div class="page" id="page-main">
+            <div id="page-book" style="transform: scale(1); width: 756px; transform-origin: top left;">
+                <div id="page-1" style="visibility: hidden; position: fixed;">
+                    <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">22.8.2024</p>
+                    <h3>Schöne Geschichten</h3>
+                    <div class="paragraph">
+                        <h4 style="padding-top: 22px;">Was du in dein Heft notierst/Ablauf:</h4>
+                        <p style="padding-bottom: 8px;">
+                            <span style="font-family: Fira Code;">1. </span>Titel, Autor, Datum <i>eintragen</i>.<br>
+                            <span style="font-family: Fira Code;">2. </span>Geschichte <i>einkleben</i>.<br>
+                            <span style="font-family: Fira Code;">3. </span>Geschichte gemeinsam lesen.<br>
+                            <span style="font-family: Fira Code;">4. </span>Erste <i>Gedanken</i> notieren: Welche <i>Meinung</i> hast du zur Geschichte, welche <i>Fragen</i> kommen dir in den Sinn? <i>Mit</i> <i style="color: green;">1. Farbe</i> <i>(5-10 Minuten)</i><br>
+                            <span style="font-family: Fira Code;">5. </span><i>Austausch mit Nachbar-/in</i> (5' + schriftliche Ergänzungen) <i>mit</i> <i style="color: dodgerblue;">2. Farbe</i>.<br>
+                            <span style="font-family: Fira Code;">6. </span><i>Diskussion in der Klasse;</i> letzte 5': stilles Notieren, was hast du aus der Besprechung mitgenommen? (Was weiss ich mehr?) <i>mit</i> <i style="color: red;">3. Farbe</i>.<br>
+                            <span style="font-family: Fira Code;">7. </span>Das Ganze in möglichst <i>übersichtlicher Darstellung</i>.<br>
+                        </p>
+                    </div>
+                    <div class="paragraph">
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 400; padding-top: 22px;">Der Fall</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
+                            <i>Ralf Thenior</i>
+                        </p>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            Er ging an den Automaten, warf drei Münzen ein, hörte es innen
+                            rumpeln, ein Pappbecher fiel auf das Rost, ein Strahl heisser Kaffee-flüssigkeit
+                            lief in den Becher, es klackte, der Strahl versiegte. Er nahm
+                            den Becher heraus, trank die Flüssigkeit in kleinen Schlucken, hörte es innen
+                            rumpeln, ein Pappbecher fiel auf das Rost, heisse Kaffeeflüssig-keit lief hinein, es klackte. Er nahm den Becher,
+                            trank, hörte es innen rumpeln, ein Becher fiel, Flüssigkeit, es klackte. Er griff den Becher, hörte es rumpeln  . . .<br>
+                               Später fand man ihn, bewusstlos, vor dem Kaffeeautomaten, dessen Hahn nur noch ganz leicht tropfte.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-1-me" placeholder="Ich denke..." style="width: 100%; height: 100px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-1-you" placeholder="Du denkst..." style="width: 100%; height: 100px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-1-us" placeholder="Wir denken..." style="width: 100%; height: 125px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-2" style="visibility: hidden; position: fixed;">
+                    <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">23.8.2024</p>
+                    <div class="paragraph" style="padding-top: 0.1px; margin-top: 30px;">
+                        <h4>7 Hinweise am Beispiel von <i>Ralf Thenior: 'Der Fall'</i></h4>
+                        <p style="font-size: 16px; padding-bottom: 8px;">
+                            <span style="font-family: Fira Code;">1. </span><b>Bild:</b><br>Eine Geschichte ist stets eine Art Gesamt<i>bild</i>. Solche Bilder sind immer <b>verschieden</b> deutbar (wenn die Deutung nicht ausdrücklich dasteht) - aber nicht <b>beliebig</b>! <i>(Vgl. auch den Text von Kästner!)</i> - Enthüllt die Deutung einen (allgemeinen) <b>Sinn</b> der Geschichte?<br>
+                            <span style="font-family: Fira Code;">2. </span><b>Motiv:</b><br>Warum handelt eine Person so? - Je mehr ein Autor über die Motive schweigt, desto vieldeutiger wird seine Geschichte. <i>(Nehmen, was gratis ist? - Angst vor verschmutztem Boden? - Sucht?...)</i><br>
+                            <span style="font-family: Fira Code;">3. </span><b>Titel:</b><br>Der Titel ist 'Programm': er liefert meist wichtige Hinweise für die Deutung der Geschichte. <i>('Der Fall' ist allerdings vieldeutig ...)</i><br>
+                            <span style="font-family: Fira Code;">4. </span><b>Signal:</b><br>Was im Text nirgends auch nur indirekt signalisiert ist, ist wohl auch nicht gemeint (etwa dass ein Mann im Automat steckt). Deutungen, die solche Zusätze benötigen, zielen über den Text hin-weg.<br>
+                            <span style="font-family: Fira Code;">5. </span><b>Vernetzung:</b><br>'Eins weist aufs andere hin': Wenn sich von einem Element des Textes ein Faden zu einem andern spinnen lässt, ist das ein Argument dafür, dass hier eine wichtige Spur vorliegt. <i>(Fall' = Kriminalfall? Dann wäre die Maschine der 'Kriminelle', also bösartig!)</i><br>
+                            <span style="font-family: Fira Code;">6. </span><b>Erwartung:</b><br>Wir haben, aus unserer Leseerfahrung, Erwartungen über den Fortgang der Geschichte - verschiedene je nach Textart. <i>(Dass die Maschine bösartig sein kann, ist insbesondere in science ficti-on - Texten gut möglich.)</i><br>
+                            <span style="font-family: Fira Code;">7. </span><b>Stil:</b><br>Der Stil, die Form eines literarischen Textes sagt immer etwas ü-ber den Inhalt. <i>(Dass die Beschreibung der Kaffeeausgabe in den Wiederholungen immer kürzer wird, kann zeigen, dass das Tempo sich beschleunigt - oder dass 'Er' immer undeutlicher sieht, was passiert.)</i><br>
+                            <br>
+                            Diese 7 Hinweise gilten in jeder Geschichte.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-2-note" placeholder="Notizen..." style="width: 100%; height: 375px; text-align: left; border: 0; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-3" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Der König und das Meer</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
+                            "Ich bin der König", sagte der König.<br>
+                            Das Meer rauschte eine Antwort.<br>
+                            "Ich weiss", sagte der König.<br>
+                            Er wurde still und nachdenklich.<br>
+                            "Ich weiss", murmelte er.<br>
+                            Dann hörte er den Rauschen zu.<br>
+                        </p>
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500;">Der König und der Baum</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            "Was machst du mit deiner Krone", fragte der König den Baum.<br>
+                            "Ich lasse die Vögel darin wohnen. Und den Wind. Und die Kinder<br>
+                            haben ihr Versteck hier", sagte der Baum<br>
+                            "Verstehe", sagte der König und hörte lange dem Rauschen des<br>
+                            Windes in den Blättern zu.<br>
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-3-me" placeholder="Ich denke..." style="width: 100%; height: 200px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-3-you" placeholder="Du denkst..." style="width: 100%; height: 200px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-3-us" placeholder="Wir denken..." style="width: 100%; height: 225px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-4" style="visibility: hidden; position: fixed;">
+                    <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">28.8.2024</p>
+                    <h3>Aufgabe: Leerstelle</h3>
+                    <p>Erstelle eine Geschichte mit einer <a title="Bedeutung Leerstelle" style="text-decoration: underline; cursor: pointer;">Leerstelle</a>. Diese Geschichte kann mitten in einer Szene sein.</p>
+                    <textarea id="lp-great_story-page-4-history" placeholder="Meine Geschichte..." style="width: 100%; height: 900px; text-align: left; border: 0; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-5" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="padding-top: 0px; margin-top: 30px;">
+                        <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">29.8.2024</p>
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Die geteilte Suppe</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
+                            Eine junge Frau, eine Studentin, geht zu Karstadt ins Restaurant
+                            und kauft sich eine Suppe und eine Cola. Sie trägt
+                            beides an einen Tisch, und als sie dort angekommen ist,
+                            merkt sie, dass sie vergessen hat, einen Löffel mitzunehmen.
+                            Sie geht zurück und holt sich den Löffel. Als sie wiederkommt,
+                            sitzt an ihrem Tisch ein Schwarzer und löffelt in
+                            ihrer Suppe. Im ersten Moment regt sie sich innerlich auf,
+                            dann denkt sie: "Naja, besser mit Humor nehmen, der hat
+                            vielleicht Hunger und nicht so viel Geld", setzt sich dazu,
+                            taucht ihren Löffel auch ein und unterhält sich mit ihm. Sie
+                            kommen ins Gespräch und teilen sich noch die Cola, und es
+                            ist richtig nett. Zum Schluss sagt sie dann, sie müsse gehen;
+                            als sie aufsteht, merkt sie, dass ihre Jacke nicht da über dem
+                            Stuhl hängt, guckt sich um und sieht auf dem Nebentisch
+                            ihre unangetastete Suppe und ihre Jacke über der Stuhllehne.<br><br>
+                        </p>
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500;">Oh dat jitt et!</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            Ming Tant wollt ens en Kölle esse, och Tante künne jet verjesse.
+                            Wie et em Levve mänchmol jeit, passt op, wat do passeere deit!
+                            Als Selvsbedeener hollt se sich en Äzesupp met Woosch an der Desch.
+                            Die Tüt met däm, wat se kaufen dät, stallt se neven der Stohl jlich op de Äd.
+                            Se merk, der Löffel fähle deit, un ohne Löffel dat nit jeit.
+                            Schnell hollt se Löffel und e Metz, doch dann wor ehre Platz besetz.
+                            Ne <span title="Zensiert" style="background-color: black;">          </span> wor ehr Zupp am esse, ehr Bildung hät se do verjesse.
+                            Se reef: "Do Lump, wat fällt Deer en, dat es ming Zupp met Woosch noch dren.
+                            Dä <span title="Zensiert" style="background-color: black;">          </span>, dã verstund kein Woot, hä laachte, wollt ehr sin noch jot.
+                            hä hollt zwei Bier, jov ehr de Hand, die Tant, die hatt hä nit jekannt.
+                            Die Woosch kräg sei im us der Zupp un reef: Die kriss do nit, do stund dä op.
+                            Hä schnapp die Tüt, jing noh der Stross, Hölp, reef die Tant, dä hät ming Blos.
+                            Do kom e Mädche ahngerannt, meint, hatt ehr üch de Schnüss verbrannt?
+                            Wie kann man sich denn so benehmen, Sie sollten sich doch etwas schämen!
+                            Wat, säht die Tant, dat es vermesse, dä <span title="Zensiert" style="background-color: black;">          </span> hät ming Zupp gefresse.
+                            Die Woosch, die hät hä ävver nit, doch ming schön Blos, die nohm hä met.
+                            et säht: Frau, drieht eröm dä Kopp. Am Desch do hingen steit en Wiel
+                            Ühr Zupp dämp nit mich, Dunnerkiel! Och steht ühr Blos am Stohl dobei,
+                            Do dät die Tant nen laute Schrei. O Jott, ich hann mich jo verdonn
+                            jetz kann di <span title="Zensiert" style="background-color: black;">          </span> ich verstonn. Doch dä wor fott, dä ärme Käl,
+                            nä, säht die Tant, wat wor ich schäl. Doch süht ne <span title="Zensiert" style="background-color: black;">         </span> se, dä weed
+                            zickdäm vun ehr nor noch hufeet.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-5-me" placeholder="Ich denke..." style="width: 100%; height: 75px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-5-you" placeholder="Du denkst..." style="width: 100%; height: 75px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-5-us" placeholder="Wir denken..." style="width: 100%; height: 75px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-6" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">30.8.2024</p>
+                        <h4 style="font-weight: 600; padding-top: 22px;">Neid is grau mit gelben Punkten</h4>
+                        <p style="font-weight: 500; font-size: 18px; padding-bottom: 8px;">
+                            Wenn sie sehr ehrlich ist, muss Anita vor sich selbst zugeben, dass sie neidisch auf
+                            die jüngere Schwester ist, der alles so viel leichter fällt:
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">1</span>
+                            das Lernen, das Gutsein, das Liebhaben und das Sichfreuen. Mareike sieht nett aus, sie hat herrlich-verrückte
+                            Einfälle, über die alle Erwachsenen sich amüsieren.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">2</span>
+                            Mühsam muss
+                            sie sich das Wissen und die Sympathie ihrer Umwelt erobern. Dabei wäre sie so gern
+                            einmal der fröhliche Mittelpunkt.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">3</span>
+                            Da wird sie Glückwünsche und Geschenke in Empfang nehmen, es werden Freundinnen
+                            kommen, Briefe wird sie auch erhalten, sie allein.<br><br>
+                            Aber kurz vor dem grossen Tag sagt Mutter nachdenklich zu Anita: "Eigentlich sollte
+                            Mareike an deinem Geburtstag nicht leer ausgehen.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">4</span>
+                            Ich hab eine Idee ..."
+                            Ah – zersprungen die Vorfreude, lautlos, wie eine schillernde Seifenblase! Natürlich,
+                            der alte Zopf:
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">5</span>
+                            Man muss teilen, sonst blutet dem anderen das Herz ... Hat Anita
+                            gedacht, sie käme einmal um Mutters Lieblingsspruch herum?<br><br>
+                            "Vielleicht einen
+                            netten Stoff?", hört sie Mutter sagen. "Du suchst ihn aus, ja?"
+                            "Wie du willst, Mutter."
+                            In ihrem Zimmer weint Anita ein bisschen.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">6</span>
+                            Wie unehrlich!, denkt sie wütend.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">7</span>
+                            <br><br>
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">8</span>
+                            So viele Stoffe:
+                            farbige Karos, lustige Streifen, kleine Blumen, grosse Blüten. Da: ein
+                            Margeritenmuster auf himmelblauem Grund. Der ist wirklich hübsch. "Na?", fragt die
+                            Mutter und prüft die Qualität.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">9</span>
+                            Es ist, als hielte etwas Gutes, aber
+                            Kraftloses in ihrem Innern die Antwort noch zurück.<br><br>
+                            "Nein", sagt sie schliesslich. Ihr Blick irrt zu den Regalen.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">10</span>
+                            Dort liegt, stiefmütterlich
+                            versteckt auf einem letzten Stapel, ein mausgrauer Stoff mit kargen gelben
+                            Punkten –
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">11</span>
+                            "Also schön", sagt die Mutter ohne Begeisterung.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">12</span>
+                            Ist sie enttäuscht?
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">13</span>
+                            Der Stoff wird abgeschnitten, bezahlt und heimgetragen.<br><br>
+                            Abends, unmittelbar vor dem Einschlafen, denkt Anita: Neid ist grau mit gelben
+                            Punkten.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">14</span>
+                            Wenn Mareike nichtvor einigen Tagen noch gesagt hätte, so nebenbei, wie Mareike etwas
+                            heraussprudeln kann, was ihr eben in den Sinn kommt: "Findest du nicht auch, dass
+                            Grau eine schlimme Farbe ist, Anita?
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">15</span>
+                            Ich glaube, Kummer ist auch grau ..."
+                        </p>
+                    </div>
+                </div>
+                <div id="page-7" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p style="font-weight: 500; font-size: 18px; padding-top: 8px; padding-bottom: 8px;">
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">16</span>
+                            Immerfort muss Anita daran denken.
+                            Es überschattet alle Vorfreude.<br><br>
+                            Schliesslich ist der Geburtstag da: Küsse, Blumen, Geschenke – eine feierliche
+                            Ansprache vom Vater vor dem Frühstück, dreizehn brennende Kerzen, das
+                            Lebenslicht in der Mitte. Doch, doch, man hat Anita lieb, das kann ein Blinder sehen.
+                            Aber Anita sieht nur eins: einen grauen Stoff mit kargen gelben Punkten. Auf ihrem
+                            Geburtstagstisch.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">17</span>
+                            "Mutter!", ruft sie entsetzt. "Das war doch der Stoff für Mareike ...!"<br><br>
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">18</span>
+                            "Nicht wahr, da habe ich dich überrascht?
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">19</span>
+                            Das habe ich an diesem Stoff doch wieder gesehen, auf den wäre ich niemals
+                            gekommen ... Anita, du weinst?"<br><br>
+                            Anita schluchzt über das verhasste Geschenk, das sie einzig und allein ihrem
+                            schäbigen Neid zuzuschreiben hat.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">20</span><br><br>
+                            "Es war aber doch ein Geschenk für Mareike! Damit sie an meinem Geburtstag nicht
+                            leer ausgeht, hast du gesagt!"
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">21</span>
+                            "Schau doch,
+                            Anita! Mir hat Mutter auch vorgeschwindelt, der Stoff sei nicht für mich! Ich habe ihn
+                            für dich ausgesucht!"
+                            Der Margeritenstoff – es ist der Margeritenstoff, den Mareike in ihren Händen hält.
+                            "Er ist ja noch schöner als damals, Mutter! Und ich hatte ja keine Ahnung, dass er
+                            mein Katzentisch) sein sollte ... Anita! Hör auf zu weinen – willst du – willst du
+                            vielleicht lieber diesen haben?
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">22</span>
+                            Komm, wir tauschen."
+                            Anita ist beschämt, als Mareike sie spielerisch in den blauen Stoff einwickelt, die
+                            Hände der kleinen Schwester liegen so lieb auf ihren Schultern.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">23</span>
+                            "Nett siehst du darin
+                            aus, Anita!"
+                            "Aber – der andere Stoff ist grau, Mareike", sagte Anita unglücklich.<br><br>
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">24</span>
+                            Es klingt kläglich und tapfer zugleich. Die Mutter sieht jetzt aus, als hätte sie in einen
+                            Abgrund geschaut.<br><br>
+                            Da gibt sich Anita einen Ruck, wickelt sich aus dem blauen Margeritenstoff heraus,
+                            faltet ihn ordentlich wieder zusammen. "Danke, Mareike", sagte sie. "Aber das kommt
+                            nicht in Frage.
+                            <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">25</span>
+                            Nicht
+                            wahr, Mutter? Es soll mich manchmal an etwas erinnern."
+                        </p>
+                    </div>
+                </div>
+                <div id="page-8" style="visibility: hidden; position: fixed;">
+                    <p>Setzte die Sätze in der richtige Position.</p>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-a" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">a. </span><span style="font-family: Nunito;">"Es sind ja gelbe Sonnenpunkte darin", antwortete Mareike.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-b" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">b. </span><span style="font-family: Nunito;">Das kommt ihr vor wie eine Zeile aus einem Gedicht.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-c" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">c. </span><span style="font-family: Nunito;">Nun zählt sie die Tage bis zu ihrem Geburtstag.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-d" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">d. </span><span style="font-family: Nunito;">Nur um Mareike verwöhnen zu können, ist Mutter jeder Vorwand recht ...</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-e" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">e. </span><span style="font-family: Nunito;">"Ich geh' ja nicht leer aus", ruft die jüngere Schwester vergnügt.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-f" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">f. </span><span style="font-family: Nunito;">Anita schweigt.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-g" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">g. </span><span style="font-family: Nunito;">Sie Mutter lacht ahnungslos.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-h" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">h. </span><span style="font-family: Nunito;">Hätte sie doch den himmelblauen gewählt, den mit den Margariten.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-i" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">i. </span><span style="font-family: Nunito;">Anita ist nicht so.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-k" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">k. </span><span style="font-family: Nunito;">Mürrisch begleitet sie die Mutter am nächsten Tag in den Laden.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-l" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">l. </span><span style="font-family: Nunito;">"Den!" sagt Anita entschieden und bemüht sich, nicht rot zu werden.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-m" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">m. </span><span style="font-family: Nunito;">Mutter wird mir aus demgrauen Stoff sehr bald ein Kleid nähen.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-n" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">n. </span><span style="font-family: Nunito;">Man kennt sich als Mutter heutzutage wirklich nicht mehr im Geschmack der eigenen Kinder aus!</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 5px;">
+                        <input id="lp-great_story-page-8-order-o" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">o. </span><span style="font-family: Nunito;">Anita will es nicht wissen.</span>
+                    </div>
+                    <div style="display:block; padding-bottom: 15px;">
+                        <input id="lp-great_story-page-8-order-p" class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="off" maxlength="2" placeholder="00" name="Card" style="font-family: Nunito; text-align: center;" size="8">
+                        <span style="font-family: Fira Code;">p. </span><span style="font-family: Nunito;">Nun bekommt Mareike also ein graues Kleid</span>
+                    </div>
+                    <textarea id="lp-great_story-page-8-me" placeholder="Ich denke..." style="width: 100%; height: 150px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-8-you" placeholder="Du denkst..." style="width: 100%; height: 150px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-8-us" placeholder="Wir denken..." style="width: 100%; height: 200px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-9" style="visibility: hidden; position: fixed;">
+                    <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">4.9.2024</p>
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <h4 style="font-family: Arial, Helvetica, sans-serif, Times, serif; font-weight: 500; padding-top: 22px;">Gabriele Wohmann: Die Klavierstunde</h4>
+                        <p style="font-family: Arial, Helvetica, sans-serif, Times, serif; font-weight: 100; font-size: 16px; padding-bottom: 8px;">
+                            Das hatte jetzt alles keine Beziehung zu ihm: die flackernden Sonnenkleckse auf dem Kiesweg, das Zittern des Birkenlaubs; die schläfrige Hitze
+                            zwischen den Hauswänden im breiten Schacht der Strasse. Er ging da hindurch (es war höchstens eine feindselige Beziehung) mit hartnäckigen
+                            kleinen Schritten. Ab und zu blieb er stehen und fand in sich die fürchterliche Möglichkeit, umzukehren, nicht hinzugehen. Sein Mund trocken vor
+                            Angst: er könnte wirklich so etwas tun. Er war allein; niemand, der ihn bewachte. Er könnte es tun. Gleichgültig, was daraus entstünde. Er hielt
+                            still, sah finster geradeaus und saugte Spucke tief aus der Kehle. Er brauchte nicht hinzugehen, er könnte sich widersetzen. Die eine Stunde
+                            möglicher Freiheit wog schwerer als die mögliche Unfreiheit eines ganzen Nachmittags. Erstrebenswert: der ungleiche Tauschhandel; das einzig
+                            Erstrebenswerte jetzt in dieser Minute. Er tat so, als bemerke er nichts davon, dass er weiterging, stellte sich überrascht, ungläubig. Die Beine
+                            trugen ihn fort, und er leugnete vor sich selbst den Befehl ab, der das bewirkte und den er gegeben hatte.<br><br>
+                            Gähnend, seufzend, streckte sie die knochigen Arme, ballte die sehr dünnen Hände zu Fäusten; sie lag auf der Chaiselongue. Dann griff die rechte
+                            Hand tastend an die Wand, fand den Bilderrahmen, in dem der Stundenplan steckte; holte ihn, hielt ihn vor die tränenden Augen. Owehowehoweh.
+                            Die Hand bewahrte den sauber geschriebenen Plan wieder zwischen Bild und Rahmen auf: müde, renitent hob sich der Oberkörper von
+                            den warmen Kissenmulden. Owehowehoweh. Sie stand auf; empfand leichten Schwindel, hämmernde Leere hinter der faltigen Stirnwand; setzte
+                            sich wieder, den nassen Blick starr, freudlos auf das schwarze Klavier gerichtet. Auf einem imaginären Bildschirm hinter den Augen sah sie den
+                            Deckel hochklappen, Notenhefte sich vor einander schieben auf dem Ständer; verschwitzte Knabenfinger drückten fest und gefühllos auf die gelblichen
+                            Tasten, die abgegriffenen; erzeugten keinen Ton. Eins zwei drei vier, eins zwei drei vier. Der glitzernde Zeiger des Metronoms pendelte beharrlich
+                            und stumm von einer auf die andere Seite seines düsteren Gehäuses. Sie stand auf, löschte das ungerufene Bild. Mit der Handfläche
+                            stemmte sie das Gewicht ihres Arms gegen die Stirn und schob die lappige lose Haut in die Höhe bis zum Haaransatz. Owehoweh. Sie entzifferte
+                            die verworrene Schrift auf dem Reklameband, das sich durchs Halbdunkel ihres Bewusstseins schob: Kopfschmerzen. Unerträgliche. ihn wegschicken
+                            Etwas Lebendigkeit kehrte in sie zurück. Im Schlafzimmer fuhr sie mit dem kalten Waschlappen über ihr Gesicht.<br><br>
+                            Brauchte nicht hinzugehen. Einfach wegbleiben. Die Umgebung wurde vertraut: ein Platz für Aktivität. Er blieb stehen, stellte die schwere Mappe
+                            mit den Noten zwischen die Beine, die Schuhe klemmten sie fest. Ein Kind rollerte vorbei; die kleinen Räder quietschten; die abstossende Ledersohle
+                            kratzte den Kies. Nicht hingehen, die Mappe loswerden und nicht hingehen. Er wusste, dass er nur die Mappe loszuwerden brauchte. Das
+                            glatte warme Holz einer Rollerlenkstange in den Händen haben. Die Mappe ins Gebüsch schleudern und einen Stein in die Hand nehmen oder
+                            einen Zweig abreissen und ihn tragen, ein Baumblatt mit den Fingern zerpflücken und den Geruch von Seife wegbekommen.<br><br>
+                            Sie deckte den einmal gefalteten Waschlappen auf die Stirn und legte den Kopf, auf dem Bettrand sass sie, weit zurück, bog den Hals. Noch mal
+                            von vorne. Und eins und zwei und eins. Die schwarze Taste, b, mein Junge. Das hellbeschriftete Reklameband erleuchtete die dämmrigen Bewusstseinskammern:
+                            Kopfschmerzen. Ihn wegschicken. Sie sass ganz still, das nasse Tuch beschwichtigte die Stirn: sie las den hoffnungsweckenden
+                            Slogan.<br><br>
+                            Feucht und hart der Lederhenkel in seiner Hand. Schwer zerrte das Gewicht der Hefte: jede einzelne Note hemmte seine kurzen Vorwärtsbewegungen.
+                            Fremde Wirklichkeit der Sonne, die aus den Wolkenflocken zuckte, durch die Laubdächer flackerte, abstrakte Muster auf den
+                            Kies warf, zitterndes Gesprenkel. Ein Kind; eine Frau, die bunte Päckchen im tiefhängenden Netz trug; ein Mann auf dem Fahrrad. Er lebte nicht
+                            mit ihnen.<br><br>
+                            Der Lappen hatte sich an der Glut ihrer Stirn erwärmt: und nicht mehr tropfig hörte er auf, wohl zu tun. Sie stellte sich vor den Spiegel, ordnete die
+                            grauen Haarfetzen. Im Ohr hämmerte der jetzt auch akustisch wirkende Slogan.
+                        </p>
+                    </div>
+                </div>
+                <div id="page-10" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p style="font-family: Arial, Helvetica, sans-serif, Times, serif; font-weight: 100; font-size: 16px; padding-top: 10px; padding-bottom: 8px;">
+                            Die Mappe loswerden. Einfach nicht hingehen. Seine Beine trugen ihn langsam, mechanisch in die Nähe der efeubeklecksten Villa.<br><br>
+                            Kopfschmerzen, unerträgliche. Sie klappte den schwarzen Deckel hoch; rückte ein verblichenes Foto auf dem Klaviersims zurecht; kratzte mit
+                            dem Zeigefingernagel ein trübes Klümpchen unter dem Daumennagel hervor.<br><br>
+                            Hinter dem verschnörkelten Eisengitter gediehen unfarbige leblose Blumen auf winzigen Rondellen, akkuraten Rabatten. Er begriff, dass er sie nie
+                            wie wirkliche Pflanzen sehen würde.<br><br>
+                            Auf den dunklen steifen Stuhl mit dem Lederpolster legte sie das grüne, schwachgemusterte Kissen, das harte, platte. Sah auf dem imaginären
+                            Bildschirm die länglichen Dellen, die seine nackten Beine zurückliessen.<br><br>
+                            Einfach nicht hingehen. Das Eisentor öffnete sich mit jammerndem Kreischlaut in den Angeln.<br><br>
+                            Kopfschmerzen, unerträgliche. Wegschicken. Widerlicher kleiner Kerl.<br><br>
+                            Die Mappe loswerden, nicht hingehen. Widerliche alte Tante.<br><br>
+                            Sie strich mit den Fingern über die Stirn. Die Klingel zerriss die Leuchtschrift, übertönte die Lockworte.<br><br>
+                            "Guten Tag", sagte er. "Guten Tag", sagte sie. Seine (von wem nur gelenkten?) Beine tappten über den dunklen Gang; seine Hand fand den messingnen
+                            Türgriff. Sie folgte ihm und sah die nackten braunen Beine platt und breit werden auf dem grünen Kissen; sah die geschrubbten Hände
+                            Hefte aus der Mappe holen, sie auf dem Ständer übereinander schieben. Schrecken in den Augen, Angst vibrierte im Hals. Sie öffnete das Aufgabenbuch,
+                            las: erinnerte mit dem (von wem nur gelöschten?) Bewusstsein. Eins zwei drei vier. Töne erzeugten seine steifen Finger; das Metronom
+                            tickte laut und humorlos.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-10-me" placeholder="Ich denke..." style="width: 100%; height: 150px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-10-you" placeholder="Du denkst..." style="width: 100%; height: 150px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-10-us" placeholder="Wir denken..." style="width: 100%; height: 150px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-11" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">6.9.2024</p>
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Das neue Alphabet</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
+                            <i>Franz Hohler</i>
+                        </p>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            Bullinger hiess er, jener Apotheker, der den grössten Teil seiner Freizeit mit dem Studium der Schriften verbrachte.<br><br>
+                            Sie waren ihm alle geläufig, alle, das Sanskrit, das Arabische, das Hindi und das Tibetische, das
+                            Japanische wie auch das Chinesische, und je länger er sich in die Zeichen und Formen vertiefte, die der menschliche
+                            Erfindungsgeist sich in allen Gegenden der Welt ausgedacht hatte, um Laute, Silben und Wörter ungesprochen mitzuteilen, desto mehr
+                            kam er zur Ueberzeugung, dass die abendländische Schrift eine der armseligsten dieses Erdballs war.<br><br>
+                            «Menschlicher Erfindungsgeist — was ist das? Das kann doch ich sein!» dachte er schliesslich und nahm sich vor,
+                            für die europäischen Sprachen eine neue Schrift zu schaffen.<br><br>
+                            So etwas braucht Zeit und Einsatz, er übergab die Führung seiner Apotheke einer Verkäuferin und zog sich für
+                            einige Zeit zurück, um sich ganz der Entwicklung dieser Schrift widmen zu können.<br><br>
+                            Nach einem halben Jahr war er so weit, dass er den Buchstaben A neu erfunden hatte — es war ein Zeichen, das für
+                            sein ganzes Alphabet richtungweisend sein sollte. Nach einem links oben ansetzenden Kreis stürzte sich die Linie in einen
+                            steilen Abgrund, aus dem sie mit Schwung wieder hochkam, dieses Ereignis mit einem erneuten kleinen Abstieg feierte, einem Hüpfer fast,
+                            von dem es dann halbschräg aufwärts ging bis zu einem Punkt, der ungefähr auf der Höhe des Kreises lag, und dort war der Auftakt zum
+                            Schlussbogen, der etwa die Form einer Klammer hatte und nochmals die ganze Amplitude des Buchstabens bestrich, einer Klammer allerdings,
+                            die nicht gegen den Buchstaben gerichtet war, sondern vom Buchstaben weg, die also im Abschliessen gewissermassen den nächsten Buchstaben schon umfasste.<br><br>
+                            Bullinger notierte dieses Zeichen mit weisser Kreide auf ein rotes Schiefertäfelchen und schickte eine Photographie
+                            davon an die UNESCO mit der Bitte um einen Unterstützungsbeitrag.<br><br>
+                            In einem Brief schilderte er seine Absicht und legte auch dar, dass er bei gleichbleibendem Arbeitstempo für die
+                            Entwicklung eines vollständigen Alphabets zirka elf Jahre benötigen werde, eine Zeit, die er nicht ohne finanziellen Zuschuss überstehen könne.<br><br>
+                            Die Antwort von der UNESCO kam ziemlich bald.
+                        </p>
+                    </div>
+                </div>
+                <div id="page-12" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px; padding-top: 8px;">
+                            In einer Zeit, hiess es darin, da die komplizierten Schriften, wie das Chinesische und das Japanische, vereinfacht
+                            würden, um sie den Leuten besser zugänglich zu machen und ihnen die Bildung zu erleichtern, gehe es nicht an, die einfachen
+                            Schriften kompliziert zu machen, und deshalb sei an eine Unterstützung seiner Arbeit gar nicht zu denken, ja, was er da tue, hielten sie für grundsätzlich falsch.<br><br>
+                            Daran hatte Bullinger nicht gedacht — ihm war es darum gegangen, mit seiner Schrift eine Synthese zwischen dem Abendland
+                            und den anderen Kulturen zu schaffen, eine Synthese, auf Grund derer sich die Völker hätten näherkommen sollen, aber er sah
+                            ein, dass der UNESCO-Beamte wahrscheinlich recht hatte und kehrte wieder in seine Apotheke zurück, was auch höchste Zeit war,
+                            denn die Verkäuferin hatte schon damit begonnen, nur noch die gutgehenden Artikel zu führen und die selten gefragten ausgehen
+                            zu lassen, und das wäre auf die Dauer das Ende der Apotheke gewesen.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-12-me" placeholder="Ich denke..." style="width: 100%; height: 200px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-12-you" placeholder="Du denkst..." style="width: 100%; height: 200px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-12-us" placeholder="Wir denken..." style="width: 100%; height: 225px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-13" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Heisses Bratenfett</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
+                            <i>Franz Hohler</i>
+                        </p>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            Der Versuch einer Hausfrau, heisses Bratenfett, statt es einfach in den Ausguss zu leeren,
+                            wo es mit den Abwässern die Kläranlage in einer, wie sie durch verschiedene Hinweise in
+                            Presseerzeugnissen wusste, unzumutbaren Weise belasten würde, in ein spezielles Glas zu
+                            schütten, welches nur dieses Bratenfett oder vielleicht, wenn noch Platz dazu wäre, später
+                            weitere Bratenfette enthalten würde und auch mit einem sogenannten Vakuumverschluss versehen
+                            war, der ein Herausfliessen oder -tröpfeln selbst in Kopflage des Glases verunmöglichte.<br><br>
+                            Dieser Versuch ging kürzlich so aus, dass der Hausfrau, die übrigens durch die Bezeichnung
+                            Hausfrau nicht vollständig gekennzeichnet fühlte, indem sie auch Arbeiten verrichtete,
+                            die mit der Führung eines Hauses nichts zu tun hatten und vielleicht gerade dadurch Überlegungen
+                            wie derjenigen mit dem Bratenfett eher zugänglich war als eine Person, deren Interessen
+                            knapp ausserhalb der Mauern, die sie belausi und behausbar macht, zu Ende gehen.<br><br>
+                            Ja, also dieser Hausfrau, die wir im weiteren trotzdem Hausfrau nennen wollen, dass
+                            dieser Hausfrau, sage ich, das Um-3chütten des Bratensaftes aus der Bratpfanne in
+                            dieses Vakuumglas zwar gelang, und das ist schon keine Kleinigkeit, wenn man sich die
+                            regelmässige, durch keinen Schnabel unterbrochene Rundung der Bratpfanne vorstellt, welche,
+                            zusammen mit dem Gewicht derselben, ein Zielen mit der Flüssigkeit äusserst schwierig macht,
+                            dass aber durch die Hitze des Bratenfettes das Glas zersprengt wurde, wenn auch so, dass
+                            der Boden des Glases mit den unteren Teilen der Glaswand als ein Stück erhalten blieb,
+                            in dem sich noch eine ansehnliche Menge des schon umgegossenen heissen Saftes befand.<br><br>
+                            Worauf die Hausfrau beschloss, diesen Saft trotzdem noch der vernünftigeren Vernichtung
+                            zuzuführen, mit anderen Worten, den Saft nochmals um-zuschütten, in ein neues, ganzes
+                            Glas, das man dann zur Verbrennung im Kehrichtwerk abgeben könnte, zusammen natürlich,
+                            damit sich der Gang lohnte, mit anderen, ähnlich aufbewahrten Öl- und Fettrückständen.<br><br>
+                            Und zu diesem Zweck die Bratpfanne aufs Abtropfbrett stellte, ein zweites Vakuumglas
+                            bereitmachte und dann mit Zeigefinger und Daumen der rechten Hand den Rest des ersten
+                            Glases ergriff, es aber mit einem Schrei sofort wieder fallenliess, weil es vom Bratensaft
+                            noch so heiss war, dass sie sich die beiden Finger schmerzhaft daran verbrannte.
+                        </p>
+                    </div>
+                </div>
+                <div id="page-14" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px; padding-top: 8px;">
+                            Was zur Folge hatte, dass aller Bratensaft in den Ausguss floss und der Schüttstein
+                            voll von zum Teil fettigen Glassplittern war, die nun entfernt werden mussten, und
+                            dass sich die Hausfrau eine Wundsalbe auf die angesengten Stellen ihrer Haut tupfen musste.<br><br>
+                            Aber das Schlimmste war für sie, wie sie später sagte, der Gedanke, dass es auf das
+                            gleiche herausgekommen wäre, wenn sie den Bratensaft von Anfang an in den Ausguss
+                            geleert hätte, ohne sich dieser Haltung zu befleissen, welche ihr nun auf einmal
+                            nicht mehr verantwortungsbewusst, sondern rechthaberisch, ja lächerlich vorkam.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-14-me" placeholder="Ich denke..." style="width: 100%; height: 250px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-14-you" placeholder="Du denkst..." style="width: 100%; height: 250px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-14-us" placeholder="Wir denken..." style="width: 100%; height: 275px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-15" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">11.9.2024</p>
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Eine ganz grosse Erfindung</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
+                            <i>Franz Hohler</i>
+                        </p>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            Die meisten Erfindungen sind darauf ausgerichtet, den Leuten eine bestimmte Mühe abzunehmen,
+                            ihnen eine Arbeit zu erleichtern. Also eine Flaschenabfüllmaschine zum Beispiel nimmt den Leuten
+                            die langweilige Arbeit ab, Most in eine Flasche zu schütten und mit einem Deckel abzuschließen.
+                            Wo früher dreißig Leute ein Leben lang abfüllten und zuschraubten, steht jetzt nur noch einer und
+                            schaut der Maschine bei der Arbeit zu, vielleicht sitzt er sogar.<br><br>
+                            Heute ist es aber so, dass der eine oder andere ganz froh wäre, er könnte wieder Most abfüllen,
+                            nicht gerade ein Leben lang, aber sagen wir ein halbes Jahr oder auch ein ganzes. Denn inzwischen
+                            sind so viele Erfindungen gemacht worden, dass sie den Leuten mehr Arbeit abgenommen haben, als
+                            die Leute eigentlich abgenommen haben wollten. Deshalb ist es Zeit für eine andere Art von
+                            Erfindungen, Erfindungen nämlich, die den Leuten Arbeit bringen, statt sie ihnen abzunehmen.<br><br>
+                            Und ich hätte damit den Anfang gemacht, indem ich eine neue Bleistiftspitzmaschine erfunden
+                            habe. Nun gibt es an sich schon Bleistiftspitzmaschinen, und meine Bleistiftspitzmaschine
+                            sieht vorne auch genau so aus wie alle anderen Bleistiftspitzmaschinen. Die Neuerung beginnt
+                            erst beim Hebel, mit dem man den Bleistift gegen das Spitzwerk dreht. Dieser Hebel ist bei mir
+                            nicht vorhanden, sondern an seiner Stelle befindet sich eine Turnhalle.<br><br>
+                            Die eine Hälfte dieser Turnhalle, die vordere nämlich, wird von einer Konstruktion aus Zahnrädern
+                            und Transmissionsriemen ausgefüllt, die zweite Hälfte nimmt ein Trampolin ein, das sich in
+                            Bodennähe befindet. Um dieses Trampolin herum führt in erhöhter Lage ein Laufsteg für ca. 30
+                            Personen. Wird nun vorn ein Bleistift in die Maschine eingeführt, so löst das in der Turnhalle
+                            ein Tonband aus, auf welchem eine aufmunternde Stimme »Hoppla!« ruft. Auf dieses »Hoppla!«
+                            springen alle 30 Personen auf das Trampolin, werden gegen die Decke der Turnhalle geschleudert
+                            und ergreifen dort einen mit der Maschine verbundenen Balken.<br><br>
+                            Durch das Gewicht der gleichzeitig anfassenden 30 Personen wird der Balken langsam heruntergedrückt
+                            und setzt das ganze vielrädrige Übertragungswerk in Gang, welches so berechnet ist, dass bei der
+                            Ankunft des Balkens knapp über Trampolinhöhe der eingeführte Bleistift gespitzt ist. Die 30 Personen
+                            lassen den Balken los, gelangen über Kletterstangen wieder auf den Laufsteg, der Balken wird
+                            hydraulisch auf seinen Ausgangspunkt gehoben, und die Maschine ist bereit für den nächsten Bleistift.
+                        </p>
+                    </div>
+                </div>
+                <div id="page-16" style="visibility: hidden; position: fixed;">
+                    <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">12.9.2024</p>
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px; padding-top: 8px;">
+                            Wenn nun jemand einwendet, diese Maschine werde sich gegenüber dem normalen Bleistiftspitzer nicht
+                            durchsetzen können, da man eine Turnhalle mieten und 30 Leute bezahlen muss, um einen Bleistift
+                            spitzen zu können, so möchte ich ihm nur sagen, dass solcherart die Maschinen der Zukunft beschafferlein
+                            werden, ob es ihm passt oder nicht. Und dass ich mehr als einen Menschen kenne, der lieber ein paarmal
+                            am Tag auf ein Trampolin springen würde, als an einer Drehbank irgendwelche Bestandteile herzustellen,
+                            zum Beispiel für eine Bleistiftspitzmaschine.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-16-me" placeholder="Ich denke..." style="width: 100%; height: 125px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-16-you" placeholder="Du denkst..." style="width: 100%; height: 125px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-16-us" placeholder="Wir denken..." style="width: 100%; height: 125px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <p style="margin-top: 30px; font-weight: 600;">Erstelle eine eigene Erfindung die Kontraproduktiv ist:</p>
+                    <textarea id="lp-great_story-page-16-own" placeholder="Wir denken..." style="width: 100%; height: 350px; text-align: left; border: 0; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-17" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">13.9.2024</p>
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Die Fabel vom guten Menschen</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            Es war einmal ein guter Mensch, der freute sich seines Lebens. Da kam eine Mücke geflogen und setzte sich auf seine Hand, um von seinem Blut zu trinken.<br>
+                            Der gute Mensch sah es und wusste, daß sie trinken wollte; da dachte er: „Die arme kleine Mücke soll sich einmal satt trinken“, und störte sie nicht.<br>
+                            Da stach ihn die Mücke, trank sich satt und flog voller Dankbarkeit davon. Sie war so froh, daß sie es allen Mücken erzählte, wie gut der Mensch gewesen wäre, und wie gut sein Blut geschmeckt hätte.<br>
+                            Da wurde der Himmel schwarz von Mücken, die alle den guten Menschen sehen und sein gutes Blut trinken wollten.<br>
+                            Und sie stachen und stachen ihn und tranken und tranken, und wurden nicht einmal satt, weil es ihrer zu viele waren.<br>
+                            Der gute Mensch aber starb.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-17-me" placeholder="Ich denke..." style="width: 100%; height: 100px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-17-you" placeholder="Du denkst..." style="width: 100%; height: 100px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-17-us" placeholder="Wir denken..." style="width: 100%; height: 100px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <p style="margin-top: 30px; font-weight: 600;">Erstelle eine eigene Fabel:</p>
+                    <textarea id="lp-great_story-page-17-own" placeholder="Wir denken..." style="width: 100%; height: 250px; text-align: left; border: 0; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-18" style="visibility: hidden; position: fixed;">
+                    <div class="paragraph" style="margin-top: 30px;">
+                        <p class="date" style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">18.9.2024</p>
+                        <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Die Überlegenheit des Menschen über den Mistkäfer</h4>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
+                            Es ist allgemein bekannt, dass der Mistkäfer sehr viel älter ist als der Mensch. Seit der
+                            Steinkohlezeit, seit Millionen von Jahren, ist er auf dem Planeten verbreitet. Er kroch durch
+                            die Wälder, ernährte sich von Blättern, natürlichem Harz, Holz, Kot und sogar von Erde. Heute
+                            frisst der Mistkäfer auch Papier, Gummi, Lack und Seife. Er ist fähig, jedes Ding in Speise zu verwandeln.<br><br>
+                            Der Mensch bekämpft den Mistkäfer mit den verschiedensten Giften, er macht auch auf den Wänden
+                            Propaganda gegen dieses Tier. Der Mensch steht mit dem Mistkäfer auf gespanntem Fuß. Der
+                            Mistkäfer hat verschiedene Dinge, die der Mensch nicht hat: die Panzer, die Antennen, die
+                            Flügel. Er hat mehrfach zusammengesetzte Augen, die ihm erlauben, im Dunkel zu sehen. Er
+                            fürchtet weder die Hitze noch die Kälte, noch die Feuchtigkeit.<br><br>
+                            Im Allgemeinen hat der Mistkäfer drei Paar Füße, in manchen Fällen aber auch vier. Er
+                            kann gehen, hüpfen und fliegen, auch wenn er kein großer Flieger ist. Er kann sowohl
+                            nagen als auch kauen oder auch gleichzeitig nagen und kauen. In manchen Fällen hat der
+                            Mistkäfer wundervolle Farben, ähnlich denjenigen des Regenbogens.<br><br>
+                            Trotz alledem ist die Überlegenheit des Menschen über den Mistkäfer unbestreitbar.
+                        </p>
+                    </div>
+                    <textarea id="lp-great_story-page-18-me" placeholder="Ich denke..." style="width: 100%; height: 150px; text-align: left; border: 0; color: green; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-18-you" placeholder="Du denkst..." style="width: 100%; height: 150px; text-align: left; border: 0; color: dodgerblue; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                    <textarea id="lp-great_story-page-18-us" placeholder="Wir denken..." style="width: 100%; height: 175px; text-align: left; border: 0; color: red; background-color: rgb(0, 0, 0, 0); resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
+                </div>
+                <div id="page-19" style="visibility: hidden; position: fixed;">
+                    <h3>Glossar</h3>
+                    <p>
+                        Interpretation = Deutung<br>
+                        Analyse = Zerlegung (=Deutung)<br>
+                        plausibel = glaubwürdig<br>
+                        unplausibel = unglaubwürdig<br>
+                        Analogie = Übereistimmung<br>
+                        Paradox = widersprüchlich<br>
+                        Leerstelle = Etwas das offen bleibt, beispielsweise die Antwort vom Meer.<br>
                     </p>
                 </div>
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px;">
-                    <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 400; padding-top: 22px;">Der Fall</h4>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
-                        <i>Ralf Thenior</i>
-                    </p>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
-                        Er ging an den Automaten, warf drei Münzen ein, hörte es innen
-                        rumpeln, ein Pappbecher fiel auf das Rost, ein Strahl heißer Kaffee-flüssigkeit
-                        lief in den Becher, es klackte, der Strahl versiegte. Er nahm
-                        den Becher heraus, trank die Flüssigkeit in kleinen Schlucken, hörte es innen
-                        rumpeln, ein Pappbecher fiel auf das Rost, heiße Kaffeeflüssig-keit lief hinein, es klackte. Er nahm den Becher,
-                        trank, hörte es innen rumpeln, ein Becher fiel, Flüssigkeit, es klackte. Er griff den Becher, hörte es rumpeln  . . .<br>
-                           Später fand man ihn, bewusstlos, vor dem Kaffeeautomaten, dessen Hahn nur noch ganz leicht tropfte.
-                    </p>
-                </div>
-                <textarea placeholder="Ich denke..." style="width: 100%; height: 100px; text-align: left; border: 0; color: green; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Du denkst..." style="width: 100%; height: 100px; text-align: left; border: 0; color: dodgerblue; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Wir denken..." style="width: 100%; height: 125px; text-align: left; border: 0; color: red; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-2" style="visibility: hidden; position: fixed;">
-                <p style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">23.8.2024</p>
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; padding-top: 0.1px; margin-top: 30px;">
-                    <h4>7 Hinweise am Beispiel von <i>Ralf Thenior: 'Der Fall'</i></h4>
-                    <p style="font-size: 16px; padding-bottom: 8px;">
-                        <span style="font-family: Fira Code;">1. </span><b>Bild:</b><br>Eine Geschichte ist stets eine Art Gesamt<i>bild</i>. Solche Bilder sind immer <b>verschieden</b> deutbar (wenn die Deutung nicht ausdrücklich dasteht) - aber nicht <b>beliebig</b>! <i>(Vgl. auch den Text von Kästner!)</i> - Enthüllt die Deutung einen (allgemeinen) <b>Sinn</b> der Geschichte?<br>
-                        <span style="font-family: Fira Code;">2. </span><b>Motiv:</b><br>Warum handelt eine Person so? - Je mehr ein Autor über die Motive schweigt, desto vieldeutiger wird seine Geschichte. <i>(Nehmen, was gratis ist? - Angst vor verschmutztem Boden? - Sucht?...)</i><br>
-                        <span style="font-family: Fira Code;">3. </span><b>Titel:</b><br>Der Titel ist 'Programm': er liefert meist wichtige Hinweise für die Deutung der Geschichte. <i>('Der Fall' ist allerdings vieldeutig ...)</i><br>
-                        <span style="font-family: Fira Code;">4. </span><b>Signal:</b><br>Was im Text nirgends auch nur indirekt signalisiert ist, ist wohl auch nicht gemeint (etwa dass ein Mann im Automat steckt). Deutungen, die solche Zusätze benötigen, zielen über den Text hin-weg.<br>
-                        <span style="font-family: Fira Code;">5. </span><b>Vernetzung:</b><br>'Eins weist aufs andere hin': Wenn sich von einem Element des Textes ein Faden zu einem andern spinnen lässt, ist das ein Argument dafür, dass hier eine wichtige Spur vorliegt. <i>(Fall' = Kriminalfall? Dann wäre die Maschine der 'Kriminelle', also bösartig!)</i><br>
-                        <span style="font-family: Fira Code;">6. </span><b>Erwartung:</b><br>Wir haben, aus unserer Leseerfahrung, Erwartungen über den Fortgang der Geschichte - verschiedene je nach Textart. <i>(Dass die Maschine bösartig sein kann, ist insbesondere in science ficti-on - Texten gut möglich.)</i><br>
-                        <span style="font-family: Fira Code;">7. </span><b>Stil:</b><br>Der Stil, die Form eines literarischen Textes sagt immer etwas ü-ber den Inhalt. <i>(Dass die Beschreibung der Kaffeeausgabe in den Wiederholungen immer kürzer wird, kann zeigen, dass das Tempo sich beschleunigt - oder dass 'Er' immer undeutlicher sieht, was passiert.)</i><br>
-                        <br>
-                        Diese 7 Hinweise gilten in jeder Geschichte.
-                    </p>
-                </div>
-                <textarea placeholder="Notizen..." style="width: 100%; height: 375px; text-align: left; border: 0; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-3" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; margin-top: 30px;">
-                    <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Der König und das Meer</h4>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
-                        "Ich bin der König", sagte der König.<br>
-                        Das Meer rauschte eine Antwort.<br>
-                        "Ich weiss", sagte der König.<br>
-                        Er wurde still und nachdenklich.<br>
-                        "Ich weiss", murmelte er.<br>
-                        Dann hörte er den Rauschen zu.<br>
-                    </p>
-                    <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500;">Der König und der Baum</h4>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
-                        "Was machst du mit deiner Krone", fragte der König den Baum.<br>
-                        "Ich lasse die Vögel darin wohnen. Und den Wind. Und die Kinder<br>
-                        haben ihr Versteck hier", sagte der Baum<br>
-                        "Verstehe", sagte der König und hörte lange dem Rauschen des<br>
-                        Windes in den Blättern zu.<br>
-                    </p>
-                </div>
-                <textarea placeholder="Ich denke..." style="width: 100%; height: 200px; text-align: left; border: 0; color: green; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Du denkst..." style="width: 100%; height: 200px; text-align: left; border: 0; color: dodgerblue; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Wir denken..." style="width: 100%; height: 225px; text-align: left; border: 0; color: red; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-4" style="visibility: hidden; position: fixed;">
-                <p style="margin-left: calc((100vh - 150px)/1.41421 - 90px); margin-top: 0px; position: fixed; top: 70px;">28.8.2024</p>
-                <h3>Aufgabe: Leerstelle</h3>
-                <p>Erstelle eine Geschichte mit einer <a title="Bedeutung Leerstelle" style="text-decoration: underline; cursor: pointer;">Leerstelle</a>. Diese Geschichte kann mitten in einer Szene sein.</p>
-                <textarea placeholder="Meine Geschichte..." style="width: 100%; height: 900px; text-align: left; border: 0; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-5" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; padding-top: 0px; margin-top: 30px;">
-                    <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Die geteilte Suppe</h4>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300;">
-                        Eine junge Frau, eine Studentin, geht zu Karstadt ins Restaurant
-                        und kauft sich eine Suppe und eine Cola. Sie trägt
-                        beides an einen Tisch, und als sie dort angekommen ist,
-                        merkt sie, daß sie vergessen hat, einen Löffel mitzunehmen.
-                        Sie geht zurück und holt sich den Löffel. Als sie wiederkommt,
-                        sitzt an ihrem Tisch ein Schwarzer und löffelt in
-                        ihrer Suppe. Im ersten Moment regt sie sich innerlich auf,
-                        dann denkt sie: "Naja, besser mit Humor nehmen, der hat
-                        vielleicht Hunger und nicht so viel Geld", setzt sich dazu,
-                        taucht ihren Löffel auch ein und unterhält sich mit ihm. Sie
-                        kommen ins Gespräch und teilen sich noch die Cola, und es
-                        ist richtig nett. Zum Schluß sagt sie dann, sie müsse gehen;
-                        als sie aufsteht, merkt sie, daß ihre Jacke nicht da über dem
-                        Stuhl hängt, guckt sich um und sieht auf dem Nebentisch
-                        ihre unangetastete Suppe und ihre Jacke über der Stuhllehne.<br><br>
-                    </p>
-                    <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500;">Oh dat jitt et!</h4>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
-                        Ming Tant wollt ens en Kölle esse, och Tante künne jet verjesse.
-                        Wie et em Levve mänchmol jeit, passt op, wat do passeere deit!
-                        Als Selvsbedeener hollt se sich en Äzesupp met Woosch an der Desch.
-                        Die Tüt met däm, wat se kaufen dät, stallt se neven der Stohl jlich op de Äd.
-                        Se merk, der Löffel fähle deit, un ohne Löffel dat nit jeit.
-                        Schnell hollt se Löffel und e Metz, doch dann wor ehre Platz besetz.
-                        Ne <span title="Zensiert" style="background-color: black;">          </span> wor ehr Zupp am esse, ehr Bildung hät se do verjesse.
-                        Se reef: "Do Lump, wat fällt Deer en, dat es ming Zupp met Woosch noch dren.
-                        Dä <span title="Zensiert" style="background-color: black;">          </span>, dã verstund kein Woot, hä laachte, wollt ehr sin noch jot.
-                        hä hollt zwei Bier, jov ehr de Hand, die Tant, die hatt hä nit jekannt.
-                        Die Woosch kräg sei im us der Zupp un reef: Die kriß do nit, do stund dä op.
-                        Hä schnapp die Tüt, jing noh der Stross, Hölp, reef die Tant, dä hät ming Blos.
-                        Do kom e Mädche ahngerannt, meint, hatt ehr üch de Schnüss verbrannt?
-                        Wie kann man sich denn so benehmen, Sie sollten sich doch etwas schämen!
-                        Wat, säht die Tant, dat es vermesse, dä <span title="Zensiert" style="background-color: black;">          </span> hät ming Zupp gefresse.
-                        Die Woosch, die hät hä ävver nit, doch ming schön Blos, die nohm hä met.
-                        et säht: Frau, drieht eröm dä Kopp. Am Desch do hingen steit en Wiel
-                        Ühr Zupp dämp nit mich, Dunnerkiel! Och steht ühr Blos am Stohl dobei,
-                        Do dät die Tant nen laute Schrei. O Jott, ich hann mich jo verdonn
-                        jetz kann di <span title="Zensiert" style="background-color: black;">          </span> ich verstonn. Doch dä wor fott, dä ärme Käl,
-                        nä, säht die Tant, wat wor ich schäl. Doch süht ne <span title="Zensiert" style="background-color: black;">         </span> se, dä weed
-                        zickdäm vun ehr nor noch hufeet.
-                    </p>
-                </div>
-                <textarea placeholder="Ich denke..." style="width: 100%; height: 75px; text-align: left; border: 0; color: green; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Du denkst..." style="width: 100%; height: 75px; text-align: left; border: 0; color: dodgerblue; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Wir denken..." style="width: 100%; height: 75px; text-align: left; border: 0; color: red; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-6" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; margin-top: 30px;">
-                    <h4 style="font-weight: 600; padding-top: 22px;">Neid is grau mit gelben Punkten</h4>
-                    <p style="font-weight: 500; font-size: 18px; padding-bottom: 8px;">
-                        Wenn sie sehr ehrlich ist, muss Anita vor sich selbst zugeben, dass sie neidisch auf
-                        die jüngere Schwester ist, der alles so viel leichter fällt:
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">1</span>
-                        das Lernen, das Gutsein, das Liebhaben und das Sichfreuen. Mareike sieht nett aus, sie hat herrlich-verrückte
-                        Einfälle, über die alle Erwachsenen sich amüsieren.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">2</span>
-                        Mühsam muss
-                        sie sich das Wissen und die Sympathie ihrer Umwelt erobern. Dabei wäre sie so gern
-                        einmal der fröhliche Mittelpunkt.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">3</span>
-                        Da wird sie Glückwünsche und Geschenke in Empfang nehmen, es werden Freundinnen
-                        kommen, Briefe wird sie auch erhalten, sie allein.<br><br>
-                        Aber kurz vor dem großen Tag sagt Mutter nachdenklich zu Anita: "Eigentlich sollte
-                        Mareike an deinem Geburtstag nicht leer ausgehen.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">4</span>
-                        Ich hab eine Idee ..."
-                        Ah – zersprungen die Vorfreude, lautlos, wie eine schillernde Seifenblase! Natürlich,
-                        der alte Zopf:
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">5</span>
-                        Man muss teilen, sonst blutet dem anderen das Herz ... Hat Anita
-                        gedacht, sie käme einmal um Mutters Lieblingsspruch herum?<br><br>
-                        "Vielleicht einen
-                        netten Stoff?", hört sie Mutter sagen. "Du suchst ihn aus, ja?"
-                        "Wie du willst, Mutter."
-                        In ihrem Zimmer weint Anita ein bisschen.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">6</span>
-                        Wie unehrlich!, denkt sie wütend.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">7</span>
-                        <br><br>
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">8</span>
-                        So viele Stoffe:
-                        farbige Karos, lustige Streifen, kleine Blumen, große Blüten. Da: ein
-                        Margeritenmuster auf himmelblauem Grund. Der ist wirklich hübsch. "Na?", fragt die
-                        Mutter und prüft die Qualität.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">9</span>
-                        Es ist, als hielte etwas Gutes, aber
-                        Kraftloses in ihrem Innern die Antwort noch zurück.<br><br>
-                        "Nein", sagt sie schließlich. Ihr Blick irrt zu den Regalen.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">10</span>
-                        Dort liegt, stiefmütterlich
-                        versteckt auf einem letzten Stapel, ein mausgrauer Stoff mit kargen gelben
-                        Punkten –
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">11</span>
-                        "Also schön", sagt die Mutter ohne Begeisterung.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">12</span>
-                        Ist sie enttäuscht?
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">13</span>
-                        Der Stoff wird abgeschnitten, bezahlt und heimgetragen.<br><br>
-                        Abends, unmittelbar vor dem Einschlafen, denkt Anita: Neid ist grau mit gelben
-                        Punkten.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">14</span>
-                        Wenn Mareike nichtvor einigen Tagen noch gesagt hätte, so nebenbei, wie Mareike etwas
-                        heraussprudeln kann, was ihr eben in den Sinn kommt: "Findest du nicht auch, dass
-                        Grau eine schlimme Farbe ist, Anita?
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">15</span>
-                        Ich glaube, Kummer ist auch grau ..."
-                    </p>
-                </div>
-            </div>
-            <div id="page-7" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; margin-top: 30px;">
-                    <p style="font-weight: 500; font-size: 18px; padding-top: 8px; padding-bottom: 8px;">
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">16</span>
-                        Immerfort muss Anita daran denken.
-                        Es überschattet alle Vorfreude.<br><br>
-                        Schließlich ist der Geburtstag da: Küsse, Blumen, Geschenke – eine feierliche
-                        Ansprache vom Vater vor dem Frühstück, dreizehn brennende Kerzen, das
-                        Lebenslicht in der Mitte. Doch, doch, man hat Anita lieb, das kann ein Blinder sehen.
-                        Aber Anita sieht nur eins: einen grauen Stoff mit kargen gelben Punkten. Auf ihrem
-                        Geburtstagstisch.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">17</span>
-                        "Mutter!", ruft sie entsetzt. "Das war doch der Stoff für Mareike ...!"<br><br>
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">18</span>
-                        "Nicht wahr, da habe ich dich überrascht?
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">19</span>
-                        Das habe ich an diesem Stoff doch wieder gesehen, auf den wäre ich niemals
-                        gekommen ... Anita, du weinst?"<br><br>
-                        Anita schluchzt über das verhasste Geschenk, das sie einzig und allein ihrem
-                        schäbigen Neid zuzuschreiben hat.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">20</span><br><br>
-                        "Es war aber doch ein Geschenk für Mareike! Damit sie an meinem Geburtstag nicht
-                        leer ausgeht, hast du gesagt!"
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">21</span>
-                        "Schau doch,
-                        Anita! Mir hat Mutter auch vorgeschwindelt, der Stoff sei nicht für mich! Ich habe ihn
-                        für dich ausgesucht!"
-                        Der Margeritenstoff – es ist der Margeritenstoff, den Mareike in ihren Händen hält.
-                        "Er ist ja noch schöner als damals, Mutter! Und ich hatte ja keine Ahnung, dass er
-                        mein Katzentisch) sein sollte ... Anita! Hör auf zu weinen – willst du – willst du
-                        vielleicht lieber diesen haben?
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">22</span>
-                        Komm, wir tauschen."
-                        Anita ist beschämt, als Mareike sie spielerisch in den blauen Stoff einwickelt, die
-                        Hände der kleinen Schwester liegen so lieb auf ihren Schultern.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">23</span>
-                        "Nett siehst du darin
-                        aus, Anita!"
-                        "Aber – der andere Stoff ist grau, Mareike", sagte Anita unglücklich.<br><br>
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">24</span>
-                        Es klingt kläglich und tapfer zugleich. Die Mutter sieht jetzt aus, als hätte sie in einen
-                        Abgrund geschaut.<br><br>
-                        Da gibt sich Anita einen Ruck, wickelt sich aus dem blauen Margeritenstoff heraus,
-                        faltet ihn ordentlich wieder zusammen. "Danke, Mareike", sagte sie. "Aber das kommt
-                        nicht in Frage.
-                        <span style="border-radius: 50%; border: 2px solid black; height: 18px; width: 18px; display: inline-block; text-align: center; line-height: 18px; font-size: 14px; font-weight: 700; transform: translateY(-2px);">25</span>
-                        Nicht
-                        wahr, Mutter? Es soll mich manchmal an etwas erinnern." 
-                    </p>
-                </div>
-            </div>
-            <div id="page-8" style="visibility: hidden; position: fixed;">
-                <p>Setzte die Sätze in der richtige Position.</p>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">a. </span><span style="font-family: Nunito;">"Es sind ja gelbe Sonnenpunkte darin", antwortete Mareike.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">b. </span><span style="font-family: Nunito;">Das kommt ihr vor wie eine Zeile aus einem Gedicht.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">c. </span><span style="font-family: Nunito;">Nun zählt sie die Tage bis zu ihrem Geburtstag.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">d. </span><span style="font-family: Nunito;">Nur um Mareike verwöhnen zu können, ist Mutter jeder Vorwand recht ...</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">e. </span><span style="font-family: Nunito;">"Ich geh' ja nicht leer aus", ruft die jüngere Schwester vergnügt.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">f. </span><span style="font-family: Nunito;">Anita schweigt.                                                                                 </span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">g. </span><span style="font-family: Nunito;">Sie Mutter lacht ahnungslos.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">h. </span><span style="font-family: Nunito;">Hätte sie doch den himmelblauen gewählt, den mit den Margariten.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">i. </span><span style="font-family: Nunito;">Anita ist nicht so.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">k. </span><span style="font-family: Nunito;">Mürrisch begleitet sie die Mutter am nächsten Tag in den Laden.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">l. </span><span style="font-family: Nunito;">"Den!" sagt Anita entschieden und bemüht sich, nicht rot zu werden.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">m. </span><span style="font-family: Nunito;">Mutter wird mir aus demgrauen Stoff sehr bald ein Kleid nähen.</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">n. </span><span style="font-family: Nunito;">Man kennt sich als Mutter heutzutage wirklich nicht mehr im Geschmack der eigenen Kinder aus!</span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 5px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">o. </span><span style="font-family: Nunito;">Anita will es nicht wissen.                           </span>
-                </div>
-                <div style="display:inline-block; padding-bottom: 15px;">
-                    <input class="input" type="text" inputmode="numeric" pattern="[0-9\s]{1,2}" autocomplete="cc-number" maxlength="2" placeholder="00" id="page-8-numbers" name="Card" style="font-family: Nunito; text-align: center;" size="8">
-                    <span style="font-family: Fira Code;">p. </span><span style="font-family: Nunito;">Nun bekommt Mareike also ein graues Kleid</span>
-                </div>
-                <textarea placeholder="Ich denke..." style="width: 100%; height: 150px; text-align: left; border: 0; color: green; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Du denkst..." style="width: 100%; height: 150px; text-align: left; border: 0; color: dodgerblue; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Wir denken..." style="width: 100%; height: 200px; text-align: left; border: 0; color: red; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-9" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; margin-top: 30px;">
-                    <h4 style="font-family: Arial, Helvetica, sans-serif, Times, serif; font-weight: 500; padding-top: 22px;">Gabriele Wohmann: Die Klavierstunde</h4>
-                    <p style="font-family: Arial, Helvetica, sans-serif, Times, serif; font-weight: 100; font-size: 16px; padding-bottom: 8px;">
-                        Das hatte jetzt alles keine Beziehung zu ihm: die flackernden Sonnenkleckse auf dem Kiesweg, das Zittern des Birkenlaubs; die schläfrige Hitze
-                        zwischen den Hauswänden im breiten Schacht der Straße. Er ging da hindurch (es war höchstens eine feindselige Beziehung) mit hartnäckigen
-                        kleinen Schritten. Ab und zu blieb er stehen und fand in sich die fürchterliche Möglichkeit, umzukehren, nicht hinzugehen. Sein Mund trocken vor
-                        Angst: er könnte wirklich so etwas tun. Er war allein; niemand, der ihn bewachte. Er könnte es tun. Gleichgültig, was daraus entstünde. Er hielt
-                        still, sah finster geradeaus und saugte Spucke tief aus der Kehle. Er brauchte nicht hinzugehen, er könnte sich widersetzen. Die eine Stunde
-                        möglicher Freiheit wog schwerer als die mögliche Unfreiheit eines ganzen Nachmittags. Erstrebenswert: der ungleiche Tauschhandel; das einzig
-                        Erstrebenswerte jetzt in dieser Minute. Er tat so, als bemerke er nichts davon, dass er weiterging, stellte sich überrascht, ungläubig. Die Beine
-                        trugen ihn fort, und er leugnete vor sich selbst den Befehl ab, der das bewirkte und den er gegeben hatte.<br><br>
-                        Gähnend, seufzend, streckte sie die knochigen Arme, ballte die sehr dünnen Hände zu Fäusten; sie lag auf der Chaiselongue. Dann griff die rechte
-                        Hand tastend an die Wand, fand den Bilderrahmen, in dem der Stundenplan steckte; holte ihn, hielt ihn vor die tränenden Augen. Owehowehoweh.
-                        Die Hand bewahrte den sauber geschriebenen Plan wieder zwischen Bild und Rahmen auf: müde, renitent hob sich der Oberkörper von
-                        den warmen Kissenmulden. Owehowehoweh. Sie stand auf; empfand leichten Schwindel, hämmernde Leere hinter der faltigen Stirnwand; setzte
-                        sich wieder, den nassen Blick starr, freudlos auf das schwarze Klavier gerichtet. Auf einem imaginären Bildschirm hinter den Augen sah sie den
-                        Deckel hochklappen, Notenhefte sich vor einander schieben auf dem Ständer; verschwitzte Knabenfinger drückten fest und gefühllos auf die gelblichen
-                        Tasten, die abgegriffenen; erzeugten keinen Ton. Eins zwei drei vier, eins zwei drei vier. Der glitzernde Zeiger des Metronoms pendelte beharrlich
-                        und stumm von einer auf die andere Seite seines düsteren Gehäuses. Sie stand auf, löschte das ungerufene Bild. Mit der Handfläche
-                        stemmte sie das Gewicht ihres Arms gegen die Stirn und schob die lappige lose Haut in die Höhe bis zum Haaransatz. Owehoweh. Sie entzifferte
-                        die verworrene Schrift auf dem Reklameband, das sich durchs Halbdunkel ihres Bewusstseins schob: Kopfschmerzen. Unerträgliche. ihn wegschicken
-                        Etwas Lebendigkeit kehrte in sie zurück. Im Schlafzimmer fuhr sie mit dem kalten Waschlappen über ihr Gesicht.<br><br>
-                        Brauchte nicht hinzugehen. Einfach wegbleiben. Die Umgebung wurde vertraut: ein Platz für Aktivität. Er blieb stehen, stellte die schwere Mappe
-                        mit den Noten zwischen die Beine, die Schuhe klemmten sie fest. Ein Kind rollerte vorbei; die kleinen Räder quietschten; die abstoßende Ledersohle
-                        kratzte den Kies. Nicht hingehen, die Mappe loswerden und nicht hingehen. Er wusste, dass er nur die Mappe loszuwerden brauchte. Das
-                        glatte warme Holz einer Rollerlenkstange in den Händen haben. Die Mappe ins Gebüsch schleudern und einen Stein in die Hand nehmen oder
-                        einen Zweig abreißen und ihn tragen, ein Baumblatt mit den Fingern zerpflücken und den Geruch von Seife wegbekommen.<br><br>
-                        Sie deckte den einmal gefalteten Waschlappen auf die Stirn und legte den Kopf, auf dem Bettrand saß sie, weit zurück, bog den Hals. Noch mal
-                        von vorne. Und eins und zwei und eins. Die schwarze Taste, b, mein Junge. Das hellbeschriftete Reklameband erleuchtete die dämmrigen Bewusstseinskammern:
-                        Kopfschmerzen. Ihn wegschicken. Sie saß ganz still, das nasse Tuch beschwichtigte die Stirn: sie las den hoffnungsweckenden
-                        Slogan.<br><br>
-                        Feucht und hart der Lederhenkel in seiner Hand. Schwer zerrte das Gewicht der Hefte: jede einzelne Note hemmte seine kurzen Vorwärtsbewegungen.
-                        Fremde Wirklichkeit der Sonne, die aus den Wolkenflocken zuckte, durch die Laubdächer flackerte, abstrakte Muster auf den
-                        Kies warf, zitterndes Gesprenkel. Ein Kind; eine Frau, die bunte Päckchen im tiefhängenden Netz trug; ein Mann auf dem Fahrrad. Er lebte nicht
-                        mit ihnen.<br><br>
-                        Der Lappen hatte sich an der Glut ihrer Stirn erwärmt: und nicht mehr tropfig hörte er auf, wohl zu tun. Sie stellte sich vor den Spiegel, ordnete die
-                        grauen Haarfetzen. Im Ohr hämmerte der jetzt auch akustisch wirkende Slogan.
-                    </p>
-                </div>
-            </div>
-            <div id="page-10" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; margin-top: 30px;">
-                    <p style="font-family: Arial, Helvetica, sans-serif, Times, serif; font-weight: 100; font-size: 16px; padding-top: 10px; padding-bottom: 8px;">
-                        Die Mappe loswerden. Einfach nicht hingehen. Seine Beine trugen ihn langsam, mechanisch in die Nähe der efeubeklecksten Villa.<br><br>
-                        Kopfschmerzen, unerträgliche. Sie klappte den schwarzen Deckel hoch; rückte ein verblichenes Foto auf dem Klaviersims zurecht; kratzte mit
-                        dem Zeigefingernagel ein trübes Klümpchen unter dem Daumennagel hervor.<br><br>
-                        Hinter dem verschnörkelten Eisengitter gediehen unfarbige leblose Blumen auf winzigen Rondellen, akkuraten Rabatten. Er begriff, dass er sie nie
-                        wie wirkliche Pflanzen sehen würde.<br><br>
-                        Auf den dunklen steifen Stuhl mit dem Lederpolster legte sie das grüne, schwachgemusterte Kissen, das harte, platte. Sah auf dem imaginären
-                        Bildschirm die länglichen Dellen, die seine nackten Beine zurückließen.<br><br>
-                        Einfach nicht hingehen. Das Eisentor öffnete sich mit jammerndem Kreischlaut in den Angeln.<br><br>
-                        Kopfschmerzen, unerträgliche. Wegschicken. Widerlicher kleiner Kerl.<br><br>
-                        Die Mappe loswerden, nicht hingehen. Widerliche alte Tante.<br><br>
-                        Sie strich mit den Fingern über die Stirn. Die Klingel zerriss die Leuchtschrift, übertönte die Lockworte.<br><br>
-                        "Guten Tag", sagte er. "Guten Tag", sagte sie. Seine (von wem nur gelenkten?) Beine tappten über den dunklen Gang; seine Hand fand den messingnen
-                        Türgriff. Sie folgte ihm und sah die nackten braunen Beine platt und breit werden auf dem grünen Kissen; sah die geschrubbten Hände
-                        Hefte aus der Mappe holen, sie auf dem Ständer übereinander schieben. Schrecken in den Augen, Angst vibrierte im Hals. Sie öffnete das Aufgabenbuch,
-                        las: erinnerte mit dem (von wem nur gelöschten?) Bewusstsein. Eins zwei drei vier. Töne erzeugten seine steifen Finger; das Metronom
-                        tickte laut und humorlos. 
-                    </p>
-                </div>
-                <textarea placeholder="Ich denke..." style="width: 100%; height: 150px; text-align: left; border: 0; color: green; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Du denkst..." style="width: 100%; height: 150px; text-align: left; border: 0; color: dodgerblue; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Wir denken..." style="width: 100%; height: 150px; text-align: left; border: 0; color: red; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-11" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; margin-top: 30px;">
-                    <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 500; padding-top: 22px;">Das neue Alphabet</h4>
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px;">
-                        Bullinger hiess er, jener Apotheker, der den grössten Teil seiner Freizeit mit dem Studium der Schriften verbrachte.<br><br>
-                        Sie waren ihm alle geläufig, alle, das Sanskrit, das Arabische, das Hindi und das Tibetische, das
-                        Japanische wie auch das Chinesische, und je länger er sich in die Zeichen und Formen vertiefte, die der menschliche
-                        Erfindungsgeist sich in allen Gegenden der Welt ausgedacht hatte, um Laute, Silben und Wörter ungesprochen mitzuteilen, desto mehr
-                        kam er zur Ueberzeugung, dass die abendländische Schrift eine der armseligsten dieses Erdballs war.<br><br>
-                        «Menschlicher Erfindungsgeist — was ist das? Das kann doch ich sein!» dachte er schliesslich und nahm sich vor,
-                        für die europäischen Sprachen eine neue Schrift zu schaffen.<br><br>
-                        So etwas braucht Zeit und Einsatz, er übergab die Führung seiner Apotheke einer Verkäuferin und zog sich für
-                        einige Zeit zurück, um sich ganz der Entwicklung dieser Schrift widmen zu können.<br><br>
-                        Nach einem halben Jahr war er so weit, dass er den Buchstaben A neu erfunden hatte — es war ein Zeichen, das für
-                        sein ganzes Alphabet richtungweisend sein sollte. Nach einem links oben ansetzenden Kreis stürzte sich die Linie in einen
-                        steilen Abgrund, aus dem sie mit Schwung wieder hochkam, dieses Ereignis mit einem erneuten kleinen Abstieg feierte, einem Hüpfer fast,
-                        von dem es dann halbschräg aufwärts ging bis zu einem Punkt, der ungefähr auf der Höhe des Kreises lag, und dort war der Auftakt zum
-                        Schlussbogen, der etwa die Form einer Klammer hatte und nochmals die ganze Amplitude des Buchstabens bestrich, einer Klammer allerdings,
-                        die nicht gegen den Buchstaben gerichtet war, sondern vom Buchstaben weg, die also im Abschliessen gewissermassen den nächsten Buchstaben schon umfasste.<br><br>
-                        Bullinger notierte dieses Zeichen mit weisser Kreide auf ein rotes Schiefertäfelchen und schickte eine Photographie
-                        davon an die UNESCO mit der Bitte um einen Unterstützungsbeitrag.<br><br>
-                        In einem Brief schilderte er seine Absicht und legte auch dar, dass er bei gleichbleibendem Arbeitstempo für die
-                        Entwicklung eines vollständigen Alphabets zirka elf Jahre benötigen werde, eine Zeit, die er nicht ohne finanziellen Zuschuss überstehen könne.<br><br>
-                        Die Antwort von der UNESCO kam ziemlich bald.
-                    </p>
-                </div>
-            </div>
-            <div id="page-12" style="visibility: hidden; position: fixed;">
-                <div style="background-color: white; border-radius: 10px; padding-left: 10px; padding-right: 10px; margin-top: 30px;">
-                    <p style="font-family: 'Times New Roman', Times, serif; font-weight: 300; padding-bottom: 8px; padding-top: 22px;">
-                        In einer Zeit, hiess es darin, da die komplizierten Schriften, wie das Chinesische und das Japanische, vereinfacht
-                        würden, um sie den Leuten besser zugänglich zu machen und ihnen die Bildung zu erleichtern, gehe es nicht an, die einfachen
-                        Schriften kompliziert zu machen, und deshalb sei an eine Unterstützung seiner Arbeit gar nicht zu denken, ja, was er da tue, hielten sie für grundsätzlich falsch.<br><br>
-                        Daran hatte Bullinger nicht gedacht — ihm war es darum gegangen, mit seiner Schrift eine Synthese zwischen dem Abendland
-                        und den anderen Kulturen zu schaffen, eine Synthese, auf Grund derer sich die Völker hätten näherkommen sollen, aber er sah
-                        ein, dass der UNESCO-Beamte wahrscheinlich recht hatte und kehrte wieder in seine Apotheke zurück, was auch höchste Zeit war,
-                        denn die Verkäuferin hatte schon damit begonnen, nur noch die gutgehenden Artikel zu führen und die selten gefragten ausgehen
-                        zu lassen, und das wäre auf die Dauer das Ende der Apotheke gewesen.
-                    </p>
-                </div>
-                <textarea placeholder="Ich denke..." style="width: 100%; height: 200px; text-align: left; border: 0; color: green; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Du denkst..." style="width: 100%; height: 200px; text-align: left; border: 0; color: dodgerblue; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-                <textarea placeholder="Wir denken..." style="width: 100%; height: 225px; text-align: left; border: 0; color: red; background-color: whitesmoke; resize: none; font-family: Nunito; font-size: 18px; outline: none;"></textarea>
-            </div>
-            <div id="page-200" style="visibility: hidden; position: fixed;">
-                <h3>Bedeutungen</h3>
-                <p>
-                    Interpretation = Deutung<br>
-                    Analyse = Zerlegung (=Deutung)<br>
-                    plausibel = glaubwürdig<br>
-                    unplausibel = unglaubwürdig<br>
-                    Analogie = Übereistimmung<br>
-                    Paradox = widersprüchlich<br>
-                    Leerstelle = Deutung<br>
-                </p>
             </div>
         </div>
     </div>
-    <a class="back" href="..">
+    <a id="back-button" class="back" href="..">
         <i class="fa-solid fa-arrow-left"></i> Deutsch
     </a>
     <div style="display: flex; justify-content: center;">
@@ -567,6 +770,17 @@
             </a>
         </div>
     </div>
+    <div style="display: flex; justify-content: center;">
+        <div style="display: inline-flex; top: 0; position: fixed;">
+            <h2 style="text-align: center; line-height: 2px; font-family: Nunito;">Schöne Geschichte!</h1>
+            
+            <a class="print" id="button-print" style="cursor: pointer;">
+                <span style="margin-left: 5px; margin-top: 8px; border-radius: 50%; height: 22px; width: 22px; display: inline-block; text-align: center; line-height: 22px; font-size: 18px; font-weight: 500; transform: translateY(-1px);">
+                    <i class="fa-solid fa-print" style=" transform: translateY(1px);"></i>
+                </span>
+            </a>
+        </div>
+    </div>
     <script>
         // 
         // let projects = JSON.parse(localStorage.getItem("projects"));
@@ -574,8 +788,76 @@
         // if (projects == "undefined" || projects == null || projects == undefined) {
             // projects = {};
             // localStorage.setItem("projects", JSON.stringify(projects));
-        // }
-        var pageAmount = 12;
+        //
+        var pageAmount = 19;
+        const textFieldList = [
+            "lp-great_story-page-1-me",
+            "lp-great_story-page-1-you",
+            "lp-great_story-page-1-us",
+            "lp-great_story-page-2-note",
+            "lp-great_story-page-3-me",
+            "lp-great_story-page-3-you",
+            "lp-great_story-page-3-us",
+            "lp-great_story-page-4-history",
+            "lp-great_story-page-5-me",
+            "lp-great_story-page-5-you",
+            "lp-great_story-page-5-us",
+            "lp-great_story-page-8-order-a",
+            "lp-great_story-page-8-order-b",
+            "lp-great_story-page-8-order-c",
+            "lp-great_story-page-8-order-d",
+            "lp-great_story-page-8-order-e",
+            "lp-great_story-page-8-order-f",
+            "lp-great_story-page-8-order-g",
+            "lp-great_story-page-8-order-h",
+            "lp-great_story-page-8-order-i",
+            "lp-great_story-page-8-order-k",
+            "lp-great_story-page-8-order-l",
+            "lp-great_story-page-8-order-m",
+            "lp-great_story-page-8-order-n",
+            "lp-great_story-page-8-order-o",
+            "lp-great_story-page-8-order-p",
+            "lp-great_story-page-8-me",
+            "lp-great_story-page-8-you",
+            "lp-great_story-page-8-us",
+            "lp-great_story-page-10-me",
+            "lp-great_story-page-10-you",
+            "lp-great_story-page-10-us",
+            "lp-great_story-page-12-me",
+            "lp-great_story-page-12-you",
+            "lp-great_story-page-12-us",
+            "lp-great_story-page-14-me",
+            "lp-great_story-page-14-you",
+            "lp-great_story-page-14-us",
+            "lp-great_story-page-16-me",
+            "lp-great_story-page-16-you",
+            "lp-great_story-page-16-us",
+            "lp-great_story-page-16-own",
+            "lp-great_story-page-17-me",
+            "lp-great_story-page-17-you",
+            "lp-great_story-page-17-us",
+            "lp-great_story-page-17-own",
+            "lp-great_story-page-18-me",
+            "lp-great_story-page-18-you",
+            "lp-great_story-page-18-us"
+        ];
+
+        for (const textFieldId of textFieldList) {
+            const textField = document.getElementById(textFieldId);
+
+            // Load saved content from Local Storage when the page is loaded
+            window.addEventListener('load', () => {
+                const savedContent = localStorage.getItem(textFieldId); // Use textFieldId as the key
+                if (savedContent) {
+                    textField.value = savedContent;
+                }
+            });
+        
+            // Save the content in Local Storage whenever the user types in the text field
+            textField.addEventListener('input', () => {
+                localStorage.setItem(textFieldId, textField.value); // Use textFieldId as the key
+            });
+        }
         let lastPage = parseInt(localStorage.getItem("lp-lastPage"));
         if (isNaN(lastPage)) {
             lastPage = 1;
@@ -584,8 +866,8 @@
         var currentPage = lastPage;
         var pageIndexText = document.getElementById("page-index");
         pageIndexText.textContent = `Seite ${currentPage} von ${pageAmount}`;
-        document.getElementById(`page-${currentPage}`).style.visibility = "visible";
-        document.getElementById(`page-${currentPage}`).style.position = "relative";
+        document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "visible";
+        document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "relative";
         if (currentPage == 1) {
             document.getElementById("page-last").style.backgroundColor = "gray";
             document.getElementById("page-last").style.cursor = "not-allowed";
@@ -604,11 +886,11 @@
         }
         document.getElementById("page-last").addEventListener('click', () => {
             if (currentPage != 1) {
-                document.getElementById(`page-${currentPage}`).style.visibility = "hidden";
-                document.getElementById(`page-${currentPage}`).style.position = "fixed";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "hidden";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "fixed";
                 currentPage -= 1;
-                document.getElementById(`page-${currentPage}`).style.visibility = "visible";
-                document.getElementById(`page-${currentPage}`).style.position = "relative";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "visible";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "relative";
                 if (currentPage == 1) {
                     document.getElementById("page-last").style.backgroundColor = "gray";
                     document.getElementById("page-last").style.cursor = "not-allowed";
@@ -625,11 +907,11 @@
         });
         document.getElementById("page-next").addEventListener('click', () => {
             if (currentPage != pageAmount) {
-                document.getElementById(`page-${currentPage}`).style.visibility = "hidden";
-                document.getElementById(`page-${currentPage}`).style.position = "fixed";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "hidden";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "fixed";
                 currentPage += 1;
-                document.getElementById(`page-${currentPage}`).style.visibility = "visible";
-                document.getElementById(`page-${currentPage}`).style.position = "relative";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "visible";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "relative";
                 document.getElementById("page-last").style.backgroundColor = "";
                 document.getElementById("page-last").style.cursor = "pointer";
                 document.getElementById("page-start").style.backgroundColor = "";
@@ -646,11 +928,11 @@
         });
         document.getElementById("page-start").addEventListener('click', () => {
             if (currentPage != 1) {
-                document.getElementById(`page-${currentPage}`).style.visibility = "hidden";
-                document.getElementById(`page-${currentPage}`).style.position = "fixed";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "hidden";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "fixed";
                 currentPage = 1;
-                document.getElementById(`page-${currentPage}`).style.visibility = "visible";
-                document.getElementById(`page-${currentPage}`).style.position = "relative";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "visible";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "relative";
                 if (currentPage == 1) {
                     document.getElementById("page-last").style.backgroundColor = "gray";
                     document.getElementById("page-last").style.cursor = "not-allowed";
@@ -667,11 +949,11 @@
         });
         document.getElementById("page-end").addEventListener('click', () => {
             if (currentPage != pageAmount) {
-                document.getElementById(`page-${currentPage}`).style.visibility = "hidden";
-                document.getElementById(`page-${currentPage}`).style.position = "fixed";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "hidden";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "fixed";
                 currentPage = pageAmount;
-                document.getElementById(`page-${currentPage}`).style.visibility = "visible";
-                document.getElementById(`page-${currentPage}`).style.position = "relative";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.visibility = "visible";
+                document.getElementById("page-book").querySelector(`#page-${currentPage}`).style.position = "relative";
                 document.getElementById("page-last").style.backgroundColor = "";
                 document.getElementById("page-last").style.cursor = "pointer";
                 document.getElementById("page-start").style.backgroundColor = "";
@@ -686,6 +968,87 @@
                 localStorage.setItem("lp-lastPage", `${currentPage}`);
             }
         });
+        document.getElementById("button-print").addEventListener('click', () => {
+            document.getElementById("printer").innerHTML = "";
+            document.getElementById("printer").style.fontFamily = "Nunito";
+            var pageChildren = document.getElementById("page-book").children;
+            for (var i = 0; i < pageChildren.length; i++) {
+                var pageOG = pageChildren[i];
+                var pagePrint = pageOG.cloneNode(true);
+                pagePrint.style.position = "relative";
+                pagePrint.style.visibility = "visible";
+                pagePrint.style.minHeight = "100vh";  // Full viewport height per page
+                pagePrint.style.marginBottom = "20px";  // Space between pages
+                const pageNumber = document.createElement('p');
+                pageNumber.style.position = "absolute"; // Fix to absolute positioning
+                pageNumber.style.bottom = "10px";  // Align to the bottom
+                if ((i + 1) % 2 === 0) {
+                    pageNumber.style.right = "10px";    // Align to the left
+                } else {
+                    pageNumber.style.left = "10px";    // Align to the left
+                }
+                pageNumber.style.fontFamily = "Nunito";
+                pageNumber.textContent = (i + 1).toString();
+                pagePrint.appendChild(pageNumber);
+                document.getElementById('printer').appendChild(pagePrint);
+            }
+            const paragraphs = Array.from(document.getElementById("printer").getElementsByClassName('paragraph'));
+
+            // Iterate over the paragraphs
+            for (const paragraph of paragraphs) {
+                paragraph.style.marginTop = "0px";
+                paragraph.style.marginBottom = "10px";
+                // Find all child elements within this paragraph
+                const children = Array.from(paragraph.children);
+
+                // Iterate over the child elements
+                for (const child of children) {
+                    child.style.paddingTop = "0px";
+                    child.style.paddingBottom = "0px";
+                }
+            }
+            const dates = Array.from(document.getElementById("printer").getElementsByClassName('date'));
+            for (const date of dates) {
+                date.style.top = "0px";
+                date.style.right = "0px";
+                date.style.fontFamily = "Nunito";
+                date.style.position = "relative";
+                date.style.transform = "translateX(80px)";
+            }
+            const textFields = Array.from(document.getElementById("printer").getElementsByTagName('textarea'));
+            for (const textField of textFields) {
+                const printedField = document.createElement('p');
+                printedField.innerHTML = textField.value.replace(/\n/g, "<br>");
+                printedField.style.color = textField.style.color
+                console.log(printedField)
+                textField.insertAdjacentElement('afterend', printedField);
+                textField.remove()
+            }
+            window.print()
+        });
+        function updateWidthSize() {
+            const back = document.getElementById("back-button");
+            const pages = document.getElementById("page-book");
+            const pageMain = document.getElementById("page-main");
+            const pageMainWidth = parseInt(window.getComputedStyle(pageMain).width.replace("px", ""));
+            if (window.innerWidth < 1020) {
+                back.innerHTML = `<i class="fa-solid fa-arrow-left"></i>`;
+            } else {
+                back.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Deutsch`;
+            }
+            if (window.innerHeight < 1220) {
+                pages.style.transform = `scale(${pageMainWidth / 756})`
+            } else {
+                pages.style.transform = `scale(1)`
+            }
+            if (window.innerWidth < 820) {
+                pageMain.style.transform = `scale(${(window.innerWidth - 120) / pageMainWidth})`
+            } else {
+                pageMain.style.transform = `scale(1)`
+            }
+        }
+        updateWidthSize();
+        window.addEventListener('resize', updateWidthSize);
     </script>
 </body>
 </html>
