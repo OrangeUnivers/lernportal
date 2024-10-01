@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griechische Buchstaben Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Griechische Buchstaben Quiz</h1>
+    <p id="question"></p>
+    <input type="text" id="userInput" placeholder="Gib den Buchstaben ein">
+    <button onclick="checkAnswer()">Überprüfen</button>
+    <div class="result" id="result"></div>
+    <script>
+        const letters = [
+            { greek: 'α', name: 'alpha' },
+            { greek: 'β', name: 'beta' },
+            { greek: 'γ', name: 'gamma' },
+            { greek: 'δ', name: 'delta' },
+            { greek: 'ε', name: 'epsilon' },
+            { greek: 'ζ', name: 'zeta' },
+            { greek: 'η', name: 'eta' },
+            { greek: 'θ', name: 'theta' },
+            { greek: 'ι', name: 'iota' },
+            { greek: 'κ', name: 'kappa' },
+            { greek: 'λ', name: 'lambda' },
+            { greek: 'μ', name: 'my' },
+            { greek: 'ν', name: 'ny' },
+            { greek: 'ξ', name: 'xi' },
+            { greek: 'ο', name: 'omicron' },
+            { greek: 'π', name: 'pi' },
+            { greek: 'ρ', name: 'rho' },
+            { greek: 'σ', name: 'sigma' },
+            { greek: 'τ', name: 'tau' },
+            { greek: 'υ', name: 'ypsilon' },
+            { greek: 'φ', name: 'phi' },
+            { greek: 'χ', name: 'chi' },
+            { greek: 'ψ', name: 'psi' },
+            { greek: 'ω', name: 'omega' },
+        ];
+
+        let currentLetterIndex = Math.floor(Math.random() * letters.length);
+        document.getElementById("question").innerText = `Was ist der griechische Buchstabe für "${letters[currentLetterIndex].greek}"?`;
+
+        function checkAnswer() {
+            const userInput = document.getElementById("userInput").value.toLowerCase();
+            const correctAnswer = letters[currentLetterIndex].name;
+            const resultDiv = document.getElementById("result");
+
+            if (userInput === correctAnswer) {
+                resultDiv.innerText = "Richtig!";
+                resultDiv.className = "result";
+            } else {
+                resultDiv.innerText = `Falsch! Der richtige Buchstabe ist "${correctAnswer}".`;
+                resultDiv.className = "error";
+            }
+
+            // Nächste Frage vorbereiten
+            currentLetterIndex = Math.floor(Math.random() * letters.length);
+            document.getElementById("question").innerText = `Was ist der griechische Buchstabe für "${letters[currentLetterIndex].greek}"?`;
+            document.getElementById("userInput").value = ''; // Eingabefeld zurücksetzen
+        }
+    </script>
+</body>
+</html>
